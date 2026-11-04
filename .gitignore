@@ -1,5 +1,7 @@
 node_modules/
 dist/
+dist-local/
+dist-local-test/
 
 # artefatos gerados por scripts/gerar_dados.py (recriados a partir de dados/ e documentos/)
 public/data.js

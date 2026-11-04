@@ -6,11 +6,29 @@ links de documentos do portal funcionarem de verdade. Substitua pelos PDFs reais
 condomínio conforme forem sendo digitalizados.
 """
 from pathlib import Path
+import struct
+import zlib
 
 RAIZ = Path(__file__).resolve().parent.parent
 DOCS = RAIZ / "documentos"
 
 NOTA_RODAPE = "Documento de demonstração do portal de dados abertos — dados fictícios."
+
+
+def criar_png(caminho: Path, largura: int, altura: int, rgb: tuple[int, int, int]) -> None:
+    """Gera um PNG sólido (truecolor 8 bits) sem dependências — placeholder de foto."""
+
+    def chunk(tipo: bytes, dados: bytes) -> bytes:
+        return (struct.pack(">I", len(dados)) + tipo + dados
+                + struct.pack(">I", zlib.crc32(tipo + dados) & 0xFFFFFFFF))
+
+    ihdr = struct.pack(">IIBBBBB", largura, altura, 8, 2, 0, 0, 0)
+    linha = b"\x00" + bytes(rgb) * largura
+    png = (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr)
+           + chunk(b"IDAT", zlib.compress(linha * altura)) + chunk(b"IEND", b""))
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_bytes(png)
+    print(f"  criado: {caminho.relative_to(RAIZ)}")
 
 
 def _esc(texto: str) -> str:
@@ -89,14 +107,33 @@ PDFS = [
     ("servicos/2026-contrato-limpeza.pdf", "Contrato de Limpeza e Conservação — Exercício 2026",
      ["Edifício Exemplo — dados fictícios", "Contratada: Clean Condomínios Ltda", "Vigência: 01/01/2026 a 31/12/2026",
       "Mensalidade: R$ 4.200,00", "Aprovado em assembleia de 10/12/2025"]),
+    ("eletrica/2025-11-laudo-spda.pdf", "Laudo do SPDA — Sistema de Proteção contra Descargas Atmosféricas",
+     ["Edifício Exemplo — dados fictícios", "Data: 20/11/2025", "Prestador: Elétrica Condor Ltda",
+      "ART 2025/9908776655 (CREA)", "Validade: 12 meses (até 20/11/2026)", "Valor: R$ 1.500,00"]),
+    ("servicos/2026-folha-pagamento.pdf", "Folha de Pagamento — Outubro/2026 (uso administrativo)",
+     ["Edifício Exemplo — dados fictícios", "Documento com dados pessoais de funcionários.",
+      "Visibilidade: ADMINISTRATIVO — não publicado no site público (LGPD).",
+      "Disponível apenas na cópia local completa da síndica."]),
+    ("servicos/2025-03-parecer-juridico.pdf", "Parecer Jurídico — Danos por vazamento na unidade 42",
+     ["Edifício Exemplo — dados fictícios", "Data: 18/03/2025", "Advogada contratada do condomínio",
+      "Visibilidade: ADMINISTRATIVO — não publicado no site público.",
+      "Disponível apenas na cópia local completa da síndica."]),
+]
+
+# fotos de demonstração (relatório fotográfico da manutenção da laje — M-005)
+FOTOS = [
+    ("estrutural/2023-04-fotos-laje-1.png", (120, 113, 108)),
+    ("estrutural/2023-04-fotos-laje-2.png", (87, 83, 78)),
 ]
 
 
 def main() -> None:
-    print("Criando PDFs de exemplo em documentos/ …")
+    print("Criando documentos de exemplo em documentos/ …")
     for rel, titulo, linhas in PDFS:
         criar_pdf(DOCS / rel, titulo, linhas)
-    print(f"{len(PDFS)} PDFs criados.")
+    for rel, rgb in FOTOS:
+        criar_png(DOCS / rel, 320, 180, rgb)
+    print(f"{len(PDFS)} PDFs e {len(FOTOS)} fotos criados.")
 
 
 if __name__ == "__main__":

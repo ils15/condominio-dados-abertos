@@ -1,0 +1,5 @@
+id;prestador_id;objeto;categoria;inicio;fim;valor_mensal;status;documento;observacoes
+CT-01;PR-06;Limpeza e conservação (equipe alocada);servicos;2026-01-01;2026-12-31;4200;ativo;documentos/servicos/2026-contrato-limpeza.pdf;Aprovado em assembleia de 10/12/2025
+CT-02;PR-07;Jardinagem mensal;servicos;2026-01-01;2026-12-31;800;ativo;;Renovação automática salvo aviso
+CT-03;PR-08;Monitoramento 24h e controle de acesso;servicos;2025-07-01;2026-12-31;1500;ativo;;Inclui app de moradores
+CT-04;PR-03;Manutenção do grupo gerador;eletrica;2025-01-01;2025-12-31;150;encerrado;;Substituído por visitas trimestrais avulsas em 2026

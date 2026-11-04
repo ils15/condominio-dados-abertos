@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "gerar": "python3 scripts/gerar_dados.py",
-    "gerar:dist": "python3 scripts/gerar_dados.py --destino dist",
-    "preview": "vite preview"
+    "gerar": "python3 scripts/gerar_dados.py --perfil publico",
+    "preview": "vite preview",
+    "gerar:local": "python3 scripts/gerar_dados.py --perfil completo && vite build --outDir dist-local && python3 scripts/gerar_dados.py --perfil publico"
   },
   "type": "module",
   "dependencies": {

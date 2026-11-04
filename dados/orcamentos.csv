@@ -1,0 +1,8 @@
+id;data;descricao;ativo_id;cronograma_id;prestador_id;valor;status;documento;observacoes
+ORC-01;2024-06-20;Troca do motor da bomba 2 (proposta vencedora);BOMB-02;;PR-02;3800;aprovado;documentos/hidraulica/2024-07-troca-motor-bomba-2.pdf;Executada em M-013
+ORC-02;2024-06-05;Troca do motor da bomba 2 (proposta alternativa);BOMB-02;;;4100;rejeitado;;Concorrente sem cadastro
+ORC-03;2026-09-15;Manutenção da impermeabilização da laje;LJ-01;CR-10;PR-04;6800;aguardando;;Cotação para item atrasado do cronograma
+ORC-04;2026-09-15;Manutenção da impermeabilização da laje (alternativa);LJ-01;CR-10;;7400;rejeitado;;Concorrente sem cadastro
+ORC-05;2026-08-25;Reparo do motor do portão da garagem;PORT-01;;;1450;aprovado;documentos/mecanica/2026-08-reparo-portao.pdf;Executada em M-041
+ORC-06;2026-02-10;Revisão anual completa do elevador social;ELEV-01;CR-02;PR-01;4800;aprovado;;Executada em M-033
+ORC-07;2026-09-20;Vistoria de fachada e esquadrias (nova);FACH-01;CR-11;PR-05;3200;aguardando;;Item atrasado desde out/2025

@@ -3,6 +3,7 @@ import Layout from './Layout'
 import Painel from './pages/Painel'
 import Cronograma from './pages/Cronograma'
 import Historico from './pages/Historico'
+import Financeiro from './pages/Financeiro'
 import Prestadores from './pages/Prestadores'
 import Documentos from './pages/Documentos'
 import DadosAbertos from './pages/DadosAbertos'
@@ -14,6 +15,7 @@ export default function App() {
         <Route index element={<Painel />} />
         <Route path="cronograma" element={<Cronograma />} />
         <Route path="historico" element={<Historico />} />
+        <Route path="financeiro" element={<Financeiro />} />
         <Route path="prestadores" element={<Prestadores />} />
         <Route path="documentos" element={<Documentos />} />
         <Route path="dados-abertos" element={<DadosAbertos />} />

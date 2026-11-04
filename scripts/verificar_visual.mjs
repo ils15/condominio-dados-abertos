@@ -51,9 +51,10 @@ await abrir('/cronograma', '04-cronograma-atrasadas', async () => {
 })
 
 await abrir('/historico', '05-historico')
-await abrir('/prestadores', '06-prestadores')
-await abrir('/documentos', '07-documentos')
-await abrir('/dados-abertos', '08-dados-abertos')
+await abrir('/financeiro', '06-financeiro')
+await abrir('/prestadores', '07-prestadores')
+await abrir('/documentos', '08-documentos')
+await abrir('/dados-abertos', '09-dados-abertos')
 
 // busca global no header (só aparece >= sm)
 await pagina.goto(`${BASE}/#/historico`, { waitUntil: 'networkidle' })

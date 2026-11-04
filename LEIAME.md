@@ -43,19 +43,37 @@ dist/                                  ← 1 único index.html autocontido + dad
 
 Também dá para editar no Excel/LibreOffice e enviar o arquivo pelo botão *Add file → Upload*.
 
-### Os quatro conjuntos (delimiter `;`, UTF-8)
+### Os sete conjuntos (delimiter `;`, UTF-8)
 
 | Arquivo | O que registra |
 |---|---|
 | `ativos.csv` | Sistemas do prédio: id, categoria, nome, local, criticidade |
 | `cronograma.csv` | Plano preventivo: ativo, atividade, periodicidade (meses), valor de referência, `ultima_execucao` manual (opcional) |
-| `manutencoes.csv` | Histórico: data, ativo, `cronograma_id` (vincula ao plano), tipo, valor, prestador, documento |
+| `manutencoes.csv` | Histórico: data, ativo, `cronograma_id` (vincula ao plano), tipo, valor, prestador, documento, `orcamento_id` |
 | `prestadores.csv` | Empresas: CNPJ, contato, especialidades |
+| `documentos.csv` | **Manifesto do repositório documental**: título, categoria, arquivo, tipo (laudo, ordem_servico, nota_fiscal, certificado, relatorio_fotografico, ART…), emissão, **validade**, prestador, **ART/RRT**, manutenção vinculada e **visibilidade** |
+| `contratos.csv` | Contratos: prestador, objeto, vigência (início/fim), mensalidade, status |
+| `orcamentos.csv` | Cotações: descrição, vínculo (ativo/plano), prestador, valor, status (aguardando/aprovado/rejeitado) |
 
 **Regras que o validador cobra:** datas `AAAA-MM-DD` ou `DD/MM/AAAA`; valores `3200.50` ou
 `3200,50` (sem separador de milhar); categorias: `hidraulica, eletrica, mecanica, estrutural,
 servicos`; tipos: `preventiva, corretiva, inspecao`; todo `documento` citado precisa existir em
-`documentos/<categoria>/`.
+`documentos/<categoria>/` (PDF ou imagem PNG/JPG); IDs referenciados precisam existir; arquivo
+presente em `documentos/` sem linha no manifesto gera **aviso**.
+
+### Visibilidade: público vs. administrativo
+
+Na coluna `visibilidade` de `documentos.csv`:
+- **publico** — vai para o site (gh-pages) e para a cópia local;
+- **administrativo** — **nunca é publicado**: fica de fora do build público (nem o arquivo é
+  copiado) e aparece só na **cópia local completa** da síndica, gerada com:
+
+```bash
+npm run gerar:local   # gera dist-local/ com TUDO (abre offline, com badge "administrativo")
+```
+
+Use `administrativo` para folha de pagamento, processos jurídicos, dados pessoais (LGPD) —
+nunca para prestações de contas coletivas.
 
 ### Como o valor estimado é calculado
 
@@ -68,12 +86,16 @@ Situação: **Atrasado** (passou), **Vence em breve** (≤ 30 dias) ou **Em dia*
 ## Rodando localmente (desenvolvimento)
 
 ```bash
-python3 scripts/gerar_dados.py        # gera public/data.js etc. (roda antes do dev/build)
+python3 scripts/gerar_dados.py        # gera public/ no perfil público (padrão)
 npm install
 npm run dev                           # dev server
 npm run build                         # gera dist/ (index.html único + dados + PDFs)
+npm run gerar:local                   # gera dist-local/ COMPLETO (com administrativos)
 python3 -m http.server 8123 -d dist   # serve a versão de produção p/ testar
 ```
+
+A arquitetura completa (benchmarking, decisões, fases de evolução para PocketBase/nuvem) está
+em [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md).
 
 Verificação visual automatizada (screenshots de todas as páginas + teste file://):
 ```bash

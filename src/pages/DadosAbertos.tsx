@@ -24,6 +24,21 @@ const RECURSOS = [
     titulo: 'Prestadores de serviços',
     descricao: 'Empresas contratadas com CNPJ, contato e especialidades.',
   },
+  {
+    nome: 'documentos',
+    titulo: 'Repositório documental (metadados)',
+    descricao: 'Laudos, ordens de serviço, notas fiscais, certificados e relatórios fotográficos com data de emissão, validade, ART/RRT e prestador vinculado.',
+  },
+  {
+    nome: 'contratos',
+    titulo: 'Contratos de prestação de serviços',
+    descricao: 'Vigência, mensalidade e situação de cada contrato do condomínio.',
+  },
+  {
+    nome: 'orcamentos',
+    titulo: 'Orçamentos',
+    descricao: 'Cotações recebidas com status (aguardando/aprovado/rejeitado) e vínculo com o plano de manutenção.',
+  },
 ] as const
 
 export default function DadosAbertos() {

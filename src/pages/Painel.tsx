@@ -68,8 +68,37 @@ export default function Painel() {
     .filter((c) => c.status === 'atrasado')
     .sort((a, b) => (a.dias_restantes ?? 0) - (b.dias_restantes ?? 0))
 
+  const docsVencidos = dados.documentos.filter((d) => d.status_validade === 'vencido')
+  const docsVencendo = dados.documentos.filter((d) => d.status_validade === 'vence_breve')
+
   return (
     <div className="flex flex-col gap-5">
+      {!consulta && (docsVencidos.length > 0 || docsVencendo.length > 0) && (
+        <Link
+          to="/documentos"
+          className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-sm transition-colors ${
+            docsVencidos.length > 0
+              ? 'border-red-200 bg-red-50 text-red-800 hover:bg-red-100 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300 dark:hover:bg-red-500/15'
+              : 'border-amber-200 bg-amber-50 text-amber-800 hover:bg-amber-100 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300 dark:hover:bg-amber-500/15'
+          }`}
+        >
+          <AlertTriangle className="h-4 w-4 shrink-0" />
+          <span>
+            {docsVencidos.length > 0 ? (
+              <>
+                <b>{docsVencidos.length} documento{docsVencidos.length > 1 ? 's' : ''} com validade vencida</b>
+                {' '}({docsVencidos.map((d) => d.titulo.split('—')[0].trim()).slice(0, 2).join(', ')}
+                {docsVencidos.length > 2 ? '…' : ''})
+              </>
+            ) : (
+              <b>{docsVencendo.length} documento(s) vencendo em até 90 dias</b>
+            )}
+            {docsVencidos.length > 0 && docsVencendo.length > 0 && ` e ${docsVencendo.length} vencendo em breve`}
+            {' '}— ver em Documentos
+          </span>
+        </Link>
+      )}
+
       {consulta ? (
         <Card titulo={`Próximas manutenções que batem com “${consulta}”`}>
           {proximas.length === 0 ? (
