@@ -1,0 +1,617 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Condominio//Portal de Dados Abertos//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Condomínio Edifício Exemplo — manutenção e agendas
+X-WR-CALDESC:Eventos previstos pelo plano de manutenção (NBR 5674) e vencimentos
+BEGIN:VEVENT
+UID:evento-1-2025-10-19@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20251019
+SUMMARY:[Validade] Laudo de vistoria — fachada e esquadrias
+DESCRIPTION:Categoria: estrutural · Tipo: laudo · ART 2024/1102345678 (CREA)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-2-2025-10-20@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20251020
+SUMMARY:[ATRASADA] Vistoria de fachada e esquadrias — Fachada e esquadrias
+DESCRIPTION:Estimativa: R$ 3.000\,00 · Prestador: Engework Engenharia · Plano CR-11 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-3-2025-11-12@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20251112
+SUMMARY:[ATRASADA] Inspeção e manutenção da impermeabilização — Laje de cobertura
+DESCRIPTION:Estimativa: R$ 6.000\,00 · Prestador: Impermeabiliza Teto Ltda · Plano CR-10 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-4-2025-12-10@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20251210
+SUMMARY:[Assembleia realizada] extraordinaria — Aprovação dos contratos de limpeza\, jardinagem e monitoramento para 2026
+DESCRIPTION:Quórum: 66.7
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-5-2026-03-14@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20260314
+SUMMARY:[Assembleia realizada] ordinaria — Prestação de contas 2025\, aprovação do orçamento 2026 e eleição do conselho fiscal
+DESCRIPTION:Quórum: 85.4
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-6-2026-09-10@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20260910
+SUMMARY:[ATRASADA] Manutenção preventiva do conjunto motor-bomba — Conjunto motor-bomba 1
+DESCRIPTION:Estimativa: R$ 883\,33 · Prestador: Hidro Bombas Serviços ME · Plano CR-04 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-7-2026-10-14@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261014
+SUMMARY:[ATRASADA] Manutenção preventiva do conjunto motor-bomba — Conjunto motor-bomba 2
+DESCRIPTION:Estimativa: R$ 883\,33 · Prestador: Hidro Bombas Serviços ME · Plano CR-05 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-8-2026-10-20@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261020
+SUMMARY:[ATRASADA] Vistoria de fachada e esquadrias — Fachada e esquadrias
+DESCRIPTION:Estimativa: R$ 3.000\,00 · Prestador: Engework Engenharia · Plano CR-11 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-9-2026-11-04@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261104
+SUMMARY:[Prevista] Manutenção do sistema de incêndio (hidrantes e extintores) — Sistema de combate a incêndio
+DESCRIPTION:Estimativa: R$ 2.200\,00 · Plano CR-14 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-10-2026-11-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261105
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-11-2026-11-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261106
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-12-2026-11-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261108
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-13-2026-11-12@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261112
+SUMMARY:[Prevista] Inspeção e manutenção da impermeabilização — Laje de cobertura
+DESCRIPTION:Estimativa: R$ 6.000\,00 · Prestador: Impermeabiliza Teto Ltda · Plano CR-10 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-14-2026-11-18@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261118
+SUMMARY:[Assembleia agendada] extraordinaria — Votação do orçamento para recuperação da impermeabilização da laje e nova vistoria de fachada
+DESCRIPTION:Confira a convocação no portal
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-15-2026-11-18@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261118
+SUMMARY:[Validade] Convocação — AGE laje e fachada
+DESCRIPTION:Categoria: assembleias · Tipo: convocacao
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-16-2026-11-20@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261120
+SUMMARY:[Validade] Laudo do SPDA — proteção contra descargas atmosféricas
+DESCRIPTION:Categoria: eletrica · Tipo: laudo · ART 2025/9908776655 (CREA)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-17-2026-11-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261128
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-18-2026-12-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261205
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-19-2026-12-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261206
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-20-2026-12-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261208
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-21-2026-12-10@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261210
+SUMMARY:[Prevista] Manutenção de câmeras e controle de acesso — Segurança patrimonial
+DESCRIPTION:Estimativa: R$ 900\,00 · Prestador: Secure Vigilância e Acesso · Plano CR-15 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-22-2026-12-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261228
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-23-2026-12-31@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261231
+SUMMARY:[Contrato] Termina vigência: Jardinagem mensal
+DESCRIPTION:Prestador: Verde Vida Jardinagem ME · mensalidade R$ 800\,00
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-24-2026-12-31@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261231
+SUMMARY:[Contrato] Termina vigência: Limpeza e conservação (equipe alocada)
+DESCRIPTION:Prestador: Clean Condomínios Ltda · mensalidade R$ 4.200\,00
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-25-2026-12-31@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261231
+SUMMARY:[Contrato] Termina vigência: Monitoramento 24h e controle de acesso
+DESCRIPTION:Prestador: Secure Vigilância e Acesso · mensalidade R$ 1.500\,00
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-26-2026-12-31@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20261231
+SUMMARY:[Validade] Contrato de limpeza e conservação 2026
+DESCRIPTION:Categoria: servicos · Tipo: contrato
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-27-2027-01-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270105
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-28-2027-01-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270106
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-29-2027-01-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270108
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-30-2027-01-15@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270115
+SUMMARY:[Prevista] Teste de carga e manutenção preventiva — Grupo gerador 60 kVA
+DESCRIPTION:Estimativa: R$ 576\,67 · Prestador: Elétrica Condor Ltda · Plano CR-09 (periodicidade: 3 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-31-2027-01-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270128
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-32-2027-01-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270128
+SUMMARY:[Validade] Certificado de limpeza — caixa d'água superior
+DESCRIPTION:Categoria: hidraulica · Tipo: certificado
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-33-2027-02-01@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270201
+SUMMARY:[Prevista] Limpeza e desinfecção da caixa d'água — Caixa d'água superior
+DESCRIPTION:Estimativa: R$ 650\,00 · Prestador: Hidro Bombas Serviços ME · Plano CR-06 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-34-2027-02-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270205
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-35-2027-02-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270206
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-36-2027-02-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270208
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-37-2027-02-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270228
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-38-2027-03-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270305
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-39-2027-03-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270306
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-40-2027-03-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270308
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-41-2027-03-10@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270310
+SUMMARY:[Prevista] Manutenção preventiva do conjunto motor-bomba — Conjunto motor-bomba 1
+DESCRIPTION:Estimativa: R$ 883\,33 · Prestador: Hidro Bombas Serviços ME · Plano CR-04 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-42-2027-03-12@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270312
+SUMMARY:[Prevista] Revisão anual completa (freios\, cabos e limitadores) — Elevador social
+DESCRIPTION:Estimativa: R$ 4.533\,33 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-02 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-43-2027-03-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270328
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-44-2027-04-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270405
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-45-2027-04-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270406
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-46-2027-04-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270408
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-47-2027-04-14@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270414
+SUMMARY:[Prevista] Manutenção preventiva do conjunto motor-bomba — Conjunto motor-bomba 2
+DESCRIPTION:Estimativa: R$ 883\,33 · Prestador: Hidro Bombas Serviços ME · Plano CR-05 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-48-2027-04-15@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270415
+SUMMARY:[Prevista] Teste de carga e manutenção preventiva — Grupo gerador 60 kVA
+DESCRIPTION:Estimativa: R$ 576\,67 · Prestador: Elétrica Condor Ltda · Plano CR-09 (periodicidade: 3 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-49-2027-04-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270428
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-50-2027-05-04@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270504
+SUMMARY:[Prevista] Manutenção do sistema de incêndio (hidrantes e extintores) — Sistema de combate a incêndio
+DESCRIPTION:Estimativa: R$ 2.200\,00 · Plano CR-14 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-51-2027-05-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270505
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-52-2027-05-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270506
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-53-2027-05-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270508
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-54-2027-05-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270528
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-55-2027-06-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270605
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-56-2027-06-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270606
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-57-2027-06-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270608
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-58-2027-06-10@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270610
+SUMMARY:[Prevista] Manutenção de câmeras e controle de acesso — Segurança patrimonial
+DESCRIPTION:Estimativa: R$ 900\,00 · Prestador: Secure Vigilância e Acesso · Plano CR-15 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-59-2027-06-15@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270615
+SUMMARY:[Prevista] Inspeção predial completa — Estrutura de concreto
+DESCRIPTION:Estimativa: R$ 15.000\,00 · Prestador: Engework Engenharia · Plano CR-12 (periodicidade: 60 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-60-2027-06-18@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270618
+SUMMARY:[Prevista] Substituição programada de luminárias (lote) — Iluminação das áreas comuns
+DESCRIPTION:Estimativa: R$ 1.450\,00 · Plano CR-13 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-61-2027-06-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270628
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-62-2027-07-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270705
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-63-2027-07-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270706
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-64-2027-07-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270708
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-65-2027-07-15@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270715
+SUMMARY:[Prevista] Teste de carga e manutenção preventiva — Grupo gerador 60 kVA
+DESCRIPTION:Estimativa: R$ 576\,67 · Prestador: Elétrica Condor Ltda · Plano CR-09 (periodicidade: 3 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-66-2027-07-25@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270725
+SUMMARY:[Prevista] Limpeza e desinfecção da cisterna — Cisterna de entrada
+DESCRIPTION:Estimativa: R$ 750\,00 · Prestador: Hidro Bombas Serviços ME · Plano CR-07 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-67-2027-07-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270728
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-68-2027-08-01@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270801
+SUMMARY:[Prevista] Limpeza e desinfecção da caixa d'água — Caixa d'água superior
+DESCRIPTION:Estimativa: R$ 650\,00 · Prestador: Hidro Bombas Serviços ME · Plano CR-06 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-69-2027-08-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270805
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-70-2027-08-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270806
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-71-2027-08-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270808
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-72-2027-08-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270828
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-73-2027-09-02@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270902
+SUMMARY:[Validade] Relatório termográfico — quadro geral de energia
+DESCRIPTION:Categoria: eletrica · Tipo: laudo
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-74-2027-09-03@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270903
+SUMMARY:[Prevista] Termografia e reaperto do quadro geral — Quadro geral de energia (QGI)
+DESCRIPTION:Estimativa: R$ 1.700\,00 · Prestador: Elétrica Condor Ltda · Plano CR-08 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-75-2027-09-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270905
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-76-2027-09-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270906
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-77-2027-09-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270908
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-78-2027-09-10@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270910
+SUMMARY:[Prevista] Manutenção preventiva do conjunto motor-bomba — Conjunto motor-bomba 1
+DESCRIPTION:Estimativa: R$ 883\,33 · Prestador: Hidro Bombas Serviços ME · Plano CR-04 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-79-2027-09-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20270928
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-80-2027-10-05@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271005
+SUMMARY:[Prevista] Contrato mensal de limpeza — Limpeza e conservação
+DESCRIPTION:Estimativa: R$ 4.050\,00 · Prestador: Clean Condomínios Ltda · Plano CR-17 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-81-2027-10-06@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271006
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador de serviço
+DESCRIPTION:Estimativa: R$ 1.152\,50 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-03 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-82-2027-10-08@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271008
+SUMMARY:[Prevista] Manutenção preventiva mensal (15 itens do fabricante) — Elevador social
+DESCRIPTION:Estimativa: R$ 1.096\,25 · Prestador: Manutenção de Elevadores Exemplo Ltda · Plano CR-01 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-83-2027-10-14@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271014
+SUMMARY:[Prevista] Manutenção preventiva do conjunto motor-bomba — Conjunto motor-bomba 2
+DESCRIPTION:Estimativa: R$ 883\,33 · Prestador: Hidro Bombas Serviços ME · Plano CR-05 (periodicidade: 6 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-84-2027-10-15@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271015
+SUMMARY:[Prevista] Teste de carga e manutenção preventiva — Grupo gerador 60 kVA
+DESCRIPTION:Estimativa: R$ 576\,67 · Prestador: Elétrica Condor Ltda · Plano CR-09 (periodicidade: 3 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-85-2027-10-20@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271020
+SUMMARY:[Prevista] Vistoria de fachada e esquadrias — Fachada e esquadrias
+DESCRIPTION:Estimativa: R$ 3.000\,00 · Prestador: Engework Engenharia · Plano CR-11 (periodicidade: 12 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-86-2027-10-28@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271028
+SUMMARY:[Prevista] Serviço mensal de jardinagem — Jardinagem e áreas verdes
+DESCRIPTION:Estimativa: R$ 775\,00 · Prestador: Verde Vida Jardinagem ME · Plano CR-16 (periodicidade: 1 meses)
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-87-2027-11-04@condominio-dados-abertos
+DTSTAMP:20261104T120000Z
+DTSTART;VALUE=DATE:20271104
+SUMMARY:[Prevista] Manutenção do sistema de incêndio (hidrantes e extintores) — Sistema de combate a incêndio
+DESCRIPTION:Estimativa: R$ 2.200\,00 · Plano CR-14 (periodicidade: 6 meses)
+END:VEVENT
+END:VCALENDAR

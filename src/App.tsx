@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Layout'
 import Painel from './pages/Painel'
+import Calendario from './pages/Calendario'
 import Cronograma from './pages/Cronograma'
 import Historico from './pages/Historico'
 import Financeiro from './pages/Financeiro'
@@ -14,6 +15,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Painel />} />
+        <Route path="calendario" element={<Calendario />} />
         <Route path="cronograma" element={<Cronograma />} />
         <Route path="historico" element={<Historico />} />
         <Route path="financeiro" element={<Financeiro />} />

@@ -769,6 +769,84 @@ def exportar_datapackage(destino: Path, gerado_em: str, perfil: str) -> None:
         json.dumps(pkg, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def exportar_ics(destino: Path, hoje: date, cronograma_calc, documentos_calc, contratos_calc, assembleias_calc) -> None:
+    """Calendário assinável (iCal): 12 meses de eventos previstos + vencimentos + assembleias.
+
+    Quem assina no Google Agenda/Apple Calendar recebe os eventos como "dia inteiro".
+    """
+    limite = add_meses(hoje, 12)
+
+    def esc(texto: str) -> str:
+        return texto.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", " ")
+
+    eventos_ics: list[tuple[str, str, str]] = []  # (data, resumo, descricao)
+
+    for c in cronograma_calc:
+        if not c["proxima_execucao"]:
+            continue
+        data = date.fromisoformat(c["proxima_execucao"])
+        passo = int(c["periodicidade_meses"])
+        n = 0
+        while data <= limite and n < 24:
+            eventos_ics.append((
+                data.isoformat(),
+                f"[{'ATRASADA' if data < hoje else 'Prevista'}] {c['atividade']} — {c['ativo_nome']}",
+                f"Estimativa: {moeda_brl(c['valor_estimado'] or 0)}"
+                + (f" · Prestador: {c['prestador_nome']}" if c["prestador_nome"] else "")
+                + f" · Plano {c['id']} (periodicidade: {passo} meses)",
+            ))
+            data = add_meses(data, passo)
+            n += 1
+
+    for d in documentos_calc:
+        if not d["validade"]:
+            continue
+        eventos_ics.append((
+            d["validade"],
+            f"[Validade] {d['titulo']}",
+            f"Categoria: {d['categoria']} · Tipo: {d['tipo']}"
+            + (f" · {d['art_rrt']}" if d["art_rrt"] else ""),
+        ))
+
+    for c in contratos_calc:
+        if c["vigente"] and c["fim"]:
+            eventos_ics.append((
+                c["fim"],
+                f"[Contrato] Termina vigência: {c['objeto']}",
+                f"Prestador: {c['prestador_nome']} · mensalidade {moeda_brl(c.get('_valor_mensal') or 0)}",
+            ))
+
+    for a in assembleias_calc:
+        eventos_ics.append((
+            a["data"],
+            f"[Assembleia {'agendada' if a['futura'] else 'realizada'}] {a['tipo']} — {a['pauta'].split(';')[0]}",
+            f"Quórum: {a['quorum_pct'] or '—'}" if not a["futura"] else "Confira a convocação no portal",
+        ))
+
+    linhas = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Condominio//Portal de Dados Abertos//PT-BR",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        f"X-WR-CALNAME:{esc(f'Condomínio {CONDOMINIO} — manutenção e agendas')}",
+        "X-WR-CALDESC:Eventos previstos pelo plano de manutenção (NBR 5674) e vencimentos",
+    ]
+    for i, (data, resumo, descricao) in enumerate(sorted(eventos_ics), start=1):
+        linhas += [
+            "BEGIN:VEVENT",
+            f"UID:evento-{i}-{data}@condominio-dados-abertos",
+            f"DTSTAMP:{hoje.isoformat().replace('-', '')}T120000Z",
+            f"DTSTART;VALUE=DATE:{data.replace('-', '')}",
+            f"SUMMARY:{esc(resumo)}",
+            f"DESCRIPTION:{esc(descricao)}",
+            "END:VEVENT",
+        ]
+    linhas.append("END:VCALENDAR")
+    (destino / "calendario.ics").write_text("\r\n".join(linhas) + "\r\n", encoding="utf-8")
+    print(f"  calendario.ics: {len(eventos_ics)} eventos")
+
+
 def exportar_csv(destino: Path, nome: str, linhas: list[dict]) -> None:
     """Grava a cópia CSV do conjunto (já filtrada pelo perfil quando aplicável)."""
     campos = [c for c, _ in CAMPOS[nome]]
@@ -919,6 +997,7 @@ def main() -> None:
     exportar_sqlite(destino, ativos, prestadores, cronograma_calc, manutencoes_calc,
                     documentos_calc, contratos_calc, orcamentos_calc)
     exportar_datapackage(destino, gerado_em, perfil)
+    exportar_ics(destino, hoje, cronograma_calc, documentos_calc, contratos_calc, assembleias_calc)
 
     # documentos: no perfil público, arquivos administrativos não são copiados
     docs_destino = destino / "documentos"

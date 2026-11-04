@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import {
-  Building2, CalendarClock, Database, FolderOpen, History, LayoutDashboard,
+  Building2, CalendarClock, CalendarDays, Database, FolderOpen, History, LayoutDashboard,
   Menu, Moon, ReceiptText, Search, Sun, Users, Vote, X,
 } from 'lucide-react'
 import { dados } from './dados'
@@ -17,6 +17,7 @@ export const useBusca = () => useContext(BuscaCtx)
 /* ------------------------------------------------------------------------- nav */
 const ITENS = [
   { para: '/', rotulo: 'Painel', icone: LayoutDashboard, fim: true },
+  { para: '/calendario', rotulo: 'Calendário', icone: CalendarDays },
   { para: '/cronograma', rotulo: 'Cronograma', icone: CalendarClock },
   { para: '/historico', rotulo: 'Histórico', icone: History },
   { para: '/financeiro', rotulo: 'Financeiro', icone: ReceiptText },

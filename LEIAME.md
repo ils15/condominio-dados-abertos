@@ -65,17 +65,32 @@ estrutural, servicos` (documentos aceitam também `assembleias`); tipos: `preven
 inspecao`; todo `documento` citado precisa existir (PDF ou imagem PNG/JPG); IDs referenciados
 precisam existir; arquivo em `documentos/` sem linha no manifesto gera **aviso**.
 
-### Alerta semanal por e-mail (opcional)
+### Informe semanal: e-mail + WhatsApp (opcional)
 
-O workflow `.github/workflows/alerta.yml` roda toda segunda às 09h e envia à síndica o que está
-atrasado/vencendo (manutenções, validades, contratos e orçamentos pendentes). Para ativar,
-cadastre em **Settings → Secrets and variables → Actions**:
+O workflow `.github/workflows/alerta.yml` roda toda segunda às 09h (Brasília) e envia à síndica
+o resumo do que está atrasado/vencendo: manutenções, validades, contratos, orçamentos pendentes
+e próxima assembleia. Canais independentes — configure um ou ambos em
+**Settings → Secrets and variables → Actions**:
 
+**E-mail (SMTP, ex.: Gmail com senha de app):**
 `ALERTA_SMTP_HOST`, `ALERTA_SMTP_PORT` (587 ou 465), `ALERTA_SMTP_USER`, `ALERTA_SMTP_PASS`,
 `ALERTA_EMAIL_DE`, `ALERTA_EMAIL_PARA`
 
-Sem os secrets, o workflow roda em modo teste e não envia nada. Teste local:
-`python3 scripts/alerta_email.py` (após gerar os dados).
+**WhatsApp (CallMeBot, grátis, envia para 1 número — ideal a síndica):**
+1. Pelo WhatsApp da síndica, envie `I allow callmebot to send me messages` para `+34 644 51 95 23`
+2. Você recebe uma chave de API; cadastre os secrets `ALERTA_WHATS_PHONE` (`+55DDDNUMERO`) e
+   `ALERTA_WHATS_APIKEY`
+
+Sem secrets, roda em modo teste sem enviar. Teste local: `python3 scripts/alerta.py`
+(após gerar os dados).
+
+### Calendário e agenda
+
+- A página **Calendário** mostra histórico executado + projeção do plano (12 meses), validades,
+  contratos e assembleias — com filtros por tipo e detalhe por dia.
+- O arquivo `calendario.ics` (gerado junto com os dados) permite **assinar** esses eventos no
+  Google Agenda/Apple Calendar: no Google Agenda → Outras agendas → Do URL → cole
+  `https://SEU-USUARIO.github.io/condominio-dados-abertos/calendario.ics`.
 
 ### Visibilidade: público vs. administrativo
 
