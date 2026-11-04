@@ -1,0 +1,19 @@
+id;categoria;nome;local;descricao;criticidade
+ELEV-01;mecanica;Elevador social;Torre - todos os andares;Elevador passageiro capacidade 8 pessoas;alta
+ELEV-02;mecanica;Elevador de serviço;Torre - serviço;Elevador de serviço capacidade 10 pessoas;alta
+BOMB-01;hidraulica;Conjunto motor-bomba 1;Casa de bombas - subsolo;Bomba de 5 CV para recalque de água;alta
+BOMB-02;hidraulica;Conjunto motor-bomba 2;Casa de bombas - subsolo;Bomba de 5 CV para recalque de água;alta
+CXAG-01;hidraulica;Caixa d'água superior;Casa de máquinas da laje;Reservatório de fibra 10.000 L;alta
+CXAG-02;hidraulica;Cisterna de entrada;Subsolo;Reservatório de concreto 15.000 L;media
+INC-01;hidraulica;Sistema de combate a incêndio;Todo o edifício;Hidrantes, mangueiras e extintores;media
+TUB-01;hidraulica;Rede de água e esgoto;Todo o edifício;Colunas de água, esgoto e rede de entrada;media
+PORT-01;mecanica;Portão automático da garagem;Garagem - acesso;Portão de enrolar com motorização;media
+QELT-01;eletrica;Quadro geral de energia (QGI);Parede técnica - térreo;Quadro geral de baixa tensão;alta
+GERA-01;eletrica;Grupo gerador 60 kVA;Casa de máquinas - cobertura;Gerador diesel para emergência;media
+ILUM-01;eletrica;Iluminação das áreas comuns;Todo o condomínio;Luminárias LED de corredores, garagem e áreas externas;baixa
+LJ-01;estrutural;Laje de cobertura;Cobertura;Laje impermeabilizada com manta asfáltica;alta
+FACH-01;estrutural;Fachada e esquadrias;Perímetro do edifício;Fachada em alvenaria e esquadrias de alumínio;media
+ESTR-01;estrutural;Estrutura de concreto;Todo o edifício;Pilares, vigas e lajes de concreto armado;alta
+LIMP-01;servicos;Limpeza e conservação;Todo o condomínio;Contrato mensal de limpeza e conservação;media
+JARD-01;servicos;Jardinagem e áreas verdes;Área externa;Manutenção de jardins e vegetação;baixa
+SEG-01;servicos;Segurança patrimonial;Portaria e circuito de TV;Câmeras, controle de acesso e alarme;alta

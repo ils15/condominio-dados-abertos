@@ -1,0 +1,7 @@
+node_modules/
+dist/
+
+# artefatos gerados por scripts/gerar_dados.py (recriados a partir de dados/ e documentos/)
+public/data.js
+public/dados/
+public/documentos/

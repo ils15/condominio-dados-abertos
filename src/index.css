@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* dark mode por classe no <html> (toggle manual persistido) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scrollbar-gutter: stable;
+}

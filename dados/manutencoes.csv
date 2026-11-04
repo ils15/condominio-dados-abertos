@@ -1,0 +1,48 @@
+id;data;ativo_id;cronograma_id;tipo;descricao;prestador_id;valor;documento;responsavel
+M-001;2023-02-10;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;980;;Síndico
+M-002;2023-03-15;ELEV-01;CR-02;inspecao;Revisão anual completa do elevador social (freios, cabos e limitadores);PR-01;4200;;Síndico
+M-003;2023-03-20;BOMB-01;CR-04;preventiva;Manutenção preventiva do conjunto motor-bomba 1;PR-02;820;;Síndico
+M-004;2023-03-20;BOMB-02;CR-05;preventiva;Manutenção preventiva do conjunto motor-bomba 2;PR-02;820;;Síndico
+M-005;2023-04-11;LJ-01;CR-10;inspecao;Manutenção da impermeabilização da laje de cobertura;PR-04;5800;;Síndico
+M-006;2023-08-08;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1020;;Síndico
+M-007;2023-10-05;GERA-01;;corretiva;Correção de falha de partida do gerador;PR-03;1250;;Zelador
+M-008;2024-01-15;CXAG-01;CR-06;preventiva;Limpeza e desinfecção da caixa d'água;PR-02;600;;Síndico
+M-009;2024-02-09;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1050;;Síndico
+M-010;2024-02-09;ELEV-02;CR-03;preventiva;Manutenção preventiva mensal do elevador de serviço;PR-01;1100;;Síndico
+M-011;2024-04-10;ELEV-01;CR-02;inspecao;Revisão anual completa do elevador social;PR-01;4600;;Síndico
+M-012;2024-06-18;ILUM-01;CR-13;preventiva;Substituição programada de luminárias (lote 2024);;1400;;Síndico
+M-013;2024-07-16;BOMB-02;;corretiva;Troca do motor da bomba 2 (queima do enrolamento);PR-02;3800;documentos/hidraulica/2024-07-troca-motor-bomba-2.pdf;Síndico
+M-014;2024-08-07;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1090;;Síndico
+M-015;2024-09-05;QELT-01;CR-08;inspecao;Termografia e reaperto do quadro geral de energia;PR-03;1600;;Síndico
+M-016;2024-09-18;BOMB-01;CR-04;preventiva;Manutenção preventiva do conjunto motor-bomba 1;PR-02;880;;Síndico
+M-017;2024-09-18;BOMB-02;CR-05;preventiva;Manutenção preventiva do conjunto motor-bomba 2;PR-02;880;;Síndico
+M-018;2024-10-20;FACH-01;CR-11;inspecao;Vistoria de fachada e esquadrias;PR-05;3000;documentos/estrutural/2024-10-vistoria-fachada.pdf;Conselho
+M-019;2024-11-12;LJ-01;CR-10;inspecao;Manutenção da impermeabilização da laje de cobertura;PR-04;6200;documentos/estrutural/2024-11-manutencao-laje.pdf;Síndico
+M-020;2024-11-20;ILUM-01;;corretiva;Substituição de 12 luminárias queimadas do 3º andar;;380;;Zelador
+M-021;2025-02-06;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1120;;Síndico
+M-022;2025-02-06;ELEV-02;CR-03;preventiva;Manutenção preventiva mensal do elevador de serviço;PR-01;1150;;Síndico
+M-023;2025-02-11;CXAG-02;;corretiva;Reparo de vazamento na rede de entrada de água;PR-02;2200;documentos/hidraulica/2025-02-reparo-vazamento.pdf;Síndico
+M-024;2025-03-05;LIMP-01;CR-17;preventiva;Contrato mensal de limpeza e conservação;PR-06;3900;;Síndico
+M-025;2025-03-28;JARD-01;CR-16;preventiva;Serviço mensal de jardinagem;PR-07;750;;Síndico
+M-026;2025-06-30;SEG-01;;corretiva;Substituição de DVR e de 2 câmeras do circuito de TV;PR-08;2900;documentos/servicos/2025-06-troca-dvr.pdf;Conselho
+M-027;2025-08-05;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1150;;Síndico
+M-028;2025-11-20;GERA-01;CR-09;preventiva;Teste de carga e manutenção preventiva do gerador;PR-03;550;;Zelador
+M-029;2026-01-14;TUB-01;;corretiva;Desentupimento e reparo da coluna de esgoto da torre;PR-02;750;;Síndico
+M-030;2026-02-05;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1180;documentos/mecanica/2026-02-relatorio-elevador-social.pdf;Síndico
+M-031;2026-02-05;ELEV-02;CR-03;preventiva;Manutenção preventiva mensal do elevador de serviço;PR-01;1180;;Síndico
+M-032;2026-03-10;BOMB-01;CR-04;preventiva;Manutenção preventiva do conjunto motor-bomba 1;PR-02;950;;Síndico
+M-033;2026-03-12;ELEV-01;CR-02;inspecao;Revisão anual completa do elevador social;PR-01;4800;;Síndico
+M-034;2026-04-14;BOMB-02;CR-05;preventiva;Manutenção preventiva do conjunto motor-bomba 2;PR-02;950;;Síndico
+M-035;2026-05-04;INC-01;CR-14;preventiva;Manutenção do sistema de incêndio (hidrantes e extintores);;2200;;Síndico
+M-036;2026-05-18;GERA-01;CR-09;preventiva;Teste de carga e manutenção preventiva do gerador;PR-03;580;;Zelador
+M-037;2026-06-10;SEG-01;CR-15;preventiva;Manutenção de câmeras e controle de acesso;PR-08;900;;Conselho
+M-038;2026-06-18;ILUM-01;CR-13;preventiva;Substituição programada de luminárias (lote 2026);;1500;;Síndico
+M-039;2026-07-25;CXAG-02;CR-07;preventiva;Limpeza e desinfecção da cisterna;PR-02;750;;Síndico
+M-040;2026-08-01;CXAG-01;CR-06;preventiva;Limpeza e desinfecção da caixa d'água;PR-02;700;documentos/hidraulica/2026-08-limpeza-caixa-agua.pdf;Síndico
+M-041;2026-08-19;PORT-01;;corretiva;Reparo do motor do portão da garagem;;1450;documentos/mecanica/2026-08-reparo-portao.pdf;Zelador
+M-042;2026-09-03;QELT-01;CR-08;inspecao;Termografia e reaperto do quadro geral de energia;PR-03;1800;documentos/eletrica/2026-09-termografia-qgi.pdf;Síndico
+M-043;2026-10-05;LIMP-01;CR-17;preventiva;Contrato mensal de limpeza e conservação;PR-06;4200;;Síndico
+M-044;2026-10-06;ELEV-02;CR-03;preventiva;Manutenção preventiva mensal do elevador de serviço;PR-01;1180;;Síndico
+M-045;2026-10-08;ELEV-01;CR-01;preventiva;Manutenção preventiva mensal do elevador social;PR-01;1180;documentos/mecanica/2026-10-relatorio-elevador-social.pdf;Síndico
+M-046;2026-10-15;GERA-01;CR-09;preventiva;Teste de carga e manutenção preventiva do gerador;PR-03;600;;Zelador
+M-047;2026-10-28;JARD-01;CR-16;preventiva;Serviço mensal de jardinagem;PR-07;800;;Síndico

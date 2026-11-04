@@ -1,0 +1,9 @@
+id;nome;cnpj;contato;especialidades;categoria
+PR-01;Manutenção de Elevadores Exemplo Ltda;12.345.678/0001-90;comercial@elevadoresexemplo.com.br / (11) 3333-1100;Elevadores - manutenção preventiva e resgate;mecanica
+PR-02;Hidro Bombas Serviços ME;23.456.789/0001-01;contato@hidrobombas.com / (11) 3444-2200;Bombas, hidráulica predial e limpeza de reservatórios;hidraulica
+PR-03;Elétrica Condor Ltda;34.567.890/0001-12;comercial@condor.com / (11) 3555-3300;Quadros elétricos, geradores e SPDA;eletrica
+PR-04;Impermeabiliza Teto Ltda;45.678.901/0001-23;orcamento@impermeabiliza.com / (11) 3666-4400;Lajes, coberturas e manta asfáltica;estrutural
+PR-05;Engework Engenharia;56.789.012/0001-34;contato@engework.com / (11) 3777-5500;Inspeções prediais (NBR 16747) e laudos;estrutural
+PR-06;Clean Condomínios Ltda;67.890.123/0001-45;clean@condominios.com / (11) 3888-6600;Limpeza e conservação predial;servicos
+PR-07;Verde Vida Jardinagem ME;78.901.234/0001-56;verdevida@jardinagem.com / (11) 3999-7700;Jardinagem e poda;servicos
+PR-08;Secure Vigilância e Acesso;89.012.345/0001-67;secure@vigilancia.com / (11) 3000-8800;Câmeras, controle de acesso e alarme;servicos

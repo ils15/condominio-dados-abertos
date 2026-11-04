@@ -1,0 +1,18 @@
+id;ativo_id;atividade;tipo;periodicidade_meses;prestador_id;valor_referencia;ultima_execucao;observacoes
+CR-01;ELEV-01;Manutenção preventiva mensal (15 itens do fabricante);preventiva;1;PR-01;1200;;Conforme plano de manutenção do fabricante
+CR-02;ELEV-01;Revisão anual completa (freios, cabos e limitadores);inspecao;12;PR-01;4800;;Inclui ensaios de segurança
+CR-03;ELEV-02;Manutenção preventiva mensal (15 itens do fabricante);preventiva;1;PR-01;1200;;Conforme plano de manutenção do fabricante
+CR-04;BOMB-01;Manutenção preventiva do conjunto motor-bomba;preventiva;6;PR-02;950;;Vedantes, rolamentos e selo mecânico
+CR-05;BOMB-02;Manutenção preventiva do conjunto motor-bomba;preventiva;6;PR-02;950;;Vedantes, rolamentos e selo mecânico
+CR-06;CXAG-01;Limpeza e desinfecção da caixa d'água;preventiva;6;PR-02;700;;Conforme normas da Vigilância Sanitária
+CR-07;CXAG-02;Limpeza e desinfecção da cisterna;preventiva;12;PR-02;750;;Conforme normas da Vigilância Sanitária
+CR-08;QELT-01;Termografia e reaperto do quadro geral;inspecao;12;PR-03;1800;;Relatório termográfico
+CR-09;GERA-01;Teste de carga e manutenção preventiva;preventiva;3;PR-03;600;;Partida semanal registrada em livro
+CR-10;LJ-01;Inspeção e manutenção da impermeabilização;inspecao;12;PR-04;6500;;Inclui tratamento de juntas e selantes
+CR-11;FACH-01;Vistoria de fachada e esquadrias;inspecao;12;PR-05;3200;;Conforme NBR 16747
+CR-12;ESTR-01;Inspeção predial completa;inspecao;60;PR-05;15000;2022-06-15;Conforme NBR 16747 - periodicidade máxima de 5 anos
+CR-13;ILUM-01;Substituição programada de luminárias (lote);preventiva;12;;1500;;Lote de reposição de LED
+CR-14;INC-01;Manutenção do sistema de incêndio (hidrantes e extintores);preventiva;6;;2200;;Inclui recarga de extintores vencidos
+CR-15;SEG-01;Manutenção de câmeras e controle de acesso;preventiva;6;PR-08;900;;Limpeza de lentes e ajuste de gravação
+CR-16;JARD-01;Serviço mensal de jardinagem;preventiva;1;PR-07;800;;Contrato mensal
+CR-17;LIMP-01;Contrato mensal de limpeza;preventiva;1;PR-06;4200;;Equipe alocada em horário comercial

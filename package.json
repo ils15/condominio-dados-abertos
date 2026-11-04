@@ -1,0 +1,32 @@
+{
+  "name": "condominio-dados-abertos",
+  "version": "1.0.0",
+  "description": "Portal de dados abertos do condomínio — manutenção predial, cronograma e documentos",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "gerar": "python3 scripts/gerar_dados.py",
+    "gerar:dist": "python3 scripts/gerar_dados.py --destino dist",
+    "preview": "vite preview"
+  },
+  "type": "module",
+  "dependencies": {
+    "lucide-react": "^1.68.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "recharts": "^3.10.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "playwright-core": "^1.64.1",
+    "tailwindcss": "^4.3.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vite-plugin-singlefile": "^2.3.4"
+  },
+  "private": true
+}
