@@ -118,6 +118,19 @@ PDFS = [
      ["Edifício Exemplo — dados fictícios", "Data: 18/03/2025", "Advogada contratada do condomínio",
       "Visibilidade: ADMINISTRATIVO — não publicado no site público.",
       "Disponível apenas na cópia local completa da síndica."]),
+    ("assembleias/2025-12-ata-age-contratos.pdf", "Ata de Assembleia Geral Extraordinária — 10/12/2025",
+     ["Edifício Exemplo — dados fictícios", "1ª convocação: 20h com 32 de 48 unidades presentes",
+      "Única pauta: aprovação dos contratos de limpeza, jardinagem e monitoramento para 2026.",
+      "Deliberação aprovada por unanimidade dos presentes."]),
+    ("assembleias/2026-03-ata-ago.pdf", "Ata de Assembleia Geral Ordinária — 14/03/2026",
+     ["Edifício Exemplo — dados fictícios", "1ª convocação: 20h com 41 de 48 unidades presentes",
+      "Pauta: prestação de contas 2025, orçamento 2026 e eleição do conselho fiscal.",
+      "Contas aprovadas com ressalva sobre a vistoria de fachada vencida."]),
+    ("assembleias/2026-11-convocacao-age-laje.pdf", "Convocação — AGE 18/11/2026",
+     ["Edifício Exemplo — dados fictícios", "Convocação de assembleia geral extraordinária",
+      "Pauta: votação de orçamento para recuperação da impermeabilização da laje (CR-10)",
+      "e contratação de nova vistoria de fachada (CR-11).",
+      "1ª convocação às 20h no salão de festas; 2ª às 20h30 com qualquer quórum."]),
 ]
 
 # fotos de demonstração (relatório fotográfico da manutenção da laje — M-005)

@@ -1,6 +1,8 @@
 /** Tipos espelhando a saída de scripts/gerar_dados.py (public/data.js) */
 
 export type Categoria = 'hidraulica' | 'eletrica' | 'mecanica' | 'estrutural' | 'servicos'
+/** Categorias de documentos incluem a pasta institucional de assembleias. */
+export type CategoriaDoc = Categoria | 'assembleias'
 export type Criticidade = 'alta' | 'media' | 'baixa'
 export type TipoManutencao = 'preventiva' | 'corretiva' | 'inspecao'
 export type StatusCronograma = 'atrasado' | 'vence_breve' | 'em_dia' | 'a_programar'
@@ -72,7 +74,7 @@ export interface Manutencao {
 export interface Documento {
   id: string
   titulo: string
-  categoria: Categoria
+  categoria: CategoriaDoc
   arquivo: string
   tipo: TipoDocumento
   data_emissao: string
@@ -126,6 +128,53 @@ export interface Orcamento {
   cronograma_atividade: string | null
 }
 
+export interface OrcamentoItemAno {
+  categoria: Categoria
+  previsto: number
+  realizado: number
+  saldo: number
+  pct_executado: number | null
+}
+
+export interface OrcamentoAno {
+  ano: number
+  itens: OrcamentoItemAno[]
+  previsto_total: number
+  realizado_total: number
+}
+
+export interface Balancete {
+  mes: string
+  receita_taxas: string
+  receita_outros: string
+  despesas: string
+  fundo_reserva: string
+  inadimplencia_pct: string
+  receita_total: number
+  resultado: number
+}
+
+export interface Assembleia {
+  id: string
+  data: string
+  tipo: 'ordinaria' | 'extraordinaria'
+  pauta: string
+  presentes: string
+  unidades: string
+  documento: string
+  observacoes: string
+  futura: boolean
+  quorum_pct: number | null
+}
+
+export interface ConsumoRow {
+  mes: string
+  agua_m3: string
+  energia_kwh: string
+  custo_agua: string
+  custo_energia: string
+}
+
 export interface Agregacoes {
   por_categoria_12m: { categoria: Categoria; total: number }[]
   por_mes: { mes: string; total: number; corretivas: number }[]
@@ -147,6 +196,8 @@ export interface Agregacoes {
     contratos_mensal_total: number
     orcamentos_aguardando: number
     orcamentos_aguardando_total: number
+    inadimplencia_atual: number | null
+    proxima_assembleia: string | null
   }
 }
 
@@ -156,6 +207,7 @@ export interface Dados {
   perfil: 'publico' | 'completo'
   condominio: { nome: string; aviso: string }
   categorias: Categoria[]
+  categorias_doc: CategoriaDoc[]
   ativos: Ativo[]
   prestadores: Prestador[]
   cronograma: ItemCronograma[]
@@ -163,5 +215,9 @@ export interface Dados {
   documentos: Documento[]
   contratos: Contrato[]
   orcamentos: Orcamento[]
+  orcamento: OrcamentoAno[]
+  balancetes: Balancete[]
+  assembleias: Assembleia[]
+  consumo: ConsumoRow[]
   agregacoes: Agregacoes
 }

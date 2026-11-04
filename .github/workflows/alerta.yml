@@ -1,0 +1,33 @@
+name: Alerta semanal por e-mail
+
+# Toda segunda-feira às 09h (Brasília) envia à síndica o resumo do que vence.
+# Requer os secrets ALERTA_SMTP_HOST, ALERTA_SMTP_PORT, ALERTA_SMTP_USER,
+# ALERTA_SMTP_PASS, ALERTA_EMAIL_DE e ALERTA_EMAIL_PARA (Settings → Secrets → Actions).
+# Sem os secrets configurados, roda em modo teste e não envia nada.
+on:
+  schedule:
+    - cron: '0 12 * * 1' # 12:00 UTC = 09:00 BRT
+  workflow_dispatch:
+
+jobs:
+  alerta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Gerar dados
+        run: python3 scripts/gerar_dados.py --perfil publico
+
+      - name: Enviar alerta
+        env:
+          ALERTA_SMTP_HOST: ${{ secrets.ALERTA_SMTP_HOST }}
+          ALERTA_SMTP_PORT: ${{ secrets.ALERTA_SMTP_PORT }}
+          ALERTA_SMTP_USER: ${{ secrets.ALERTA_SMTP_USER }}
+          ALERTA_SMTP_PASS: ${{ secrets.ALERTA_SMTP_PASS }}
+          ALERTA_EMAIL_DE: ${{ secrets.ALERTA_EMAIL_DE }}
+          ALERTA_EMAIL_PARA: ${{ secrets.ALERTA_EMAIL_PARA }}
+        run: python3 scripts/alerta_email.py

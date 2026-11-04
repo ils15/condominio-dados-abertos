@@ -39,3 +39,11 @@ export const mesCurto = (mes: string): string => {
   const [a, m] = mes.split('-')
   return `${MESES[Number(m) - 1]}/${a.slice(2)}`
 }
+
+/** '2026-11' -> 'novembro/2026' */
+const MESES_LONGOS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
+  'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+export const mesPt = (mes: string): string => {
+  const [a, m] = mes.split('-')
+  return `${MESES_LONGOS[Number(m) - 1]}/${a}`
+}

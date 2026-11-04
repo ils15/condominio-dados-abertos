@@ -43,7 +43,7 @@ dist/                                  ← 1 único index.html autocontido + dad
 
 Também dá para editar no Excel/LibreOffice e enviar o arquivo pelo botão *Add file → Upload*.
 
-### Os sete conjuntos (delimiter `;`, UTF-8)
+### Os onze conjuntos (delimiter `;`, UTF-8)
 
 | Arquivo | O que registra |
 |---|---|
@@ -51,15 +51,31 @@ Também dá para editar no Excel/LibreOffice e enviar o arquivo pelo botão *Add
 | `cronograma.csv` | Plano preventivo: ativo, atividade, periodicidade (meses), valor de referência, `ultima_execucao` manual (opcional) |
 | `manutencoes.csv` | Histórico: data, ativo, `cronograma_id` (vincula ao plano), tipo, valor, prestador, documento, `orcamento_id` |
 | `prestadores.csv` | Empresas: CNPJ, contato, especialidades |
-| `documentos.csv` | **Manifesto do repositório documental**: título, categoria, arquivo, tipo (laudo, ordem_servico, nota_fiscal, certificado, relatorio_fotografico, ART…), emissão, **validade**, prestador, **ART/RRT**, manutenção vinculada e **visibilidade** |
+| `documentos.csv` | **Manifesto do repositório documental**: título, categoria (inclui `assembleias`), arquivo, tipo (laudo, ordem_servico, nota_fiscal, certificado, relatorio_fotografico, ata, convocação, ART…), emissão, **validade**, prestador, **ART/RRT**, manutenção vinculada e **visibilidade** |
 | `contratos.csv` | Contratos: prestador, objeto, vigência (início/fim), mensalidade, status |
 | `orcamentos.csv` | Cotações: descrição, vínculo (ativo/plano), prestador, valor, status (aguardando/aprovado/rejeitado) |
+| `orcamento_anual.csv` | **Previsão aprovada em assembleia**: ano, categoria, valor previsto — o site cruza com o realizado |
+| `balancetes.csv` | **Balancete mensal**: mês (`AAAA-MM`), receita de taxas, outras receitas, despesas, fundo de reserva, inadimplência % (agregada — nunca por unidade) |
+| `assembleias.csv` | Assembleias: data, tipo (ordinária/extraordinária), pauta, presentes/unidades (quórum) e a ata/convocação em `documentos/assembleias/` |
+| `consumo.csv` | Consumo mensal das áreas comuns: água (m³), energia (kWh) e custos |
 
-**Regras que o validador cobra:** datas `AAAA-MM-DD` ou `DD/MM/AAAA`; valores `3200.50` ou
-`3200,50` (sem separador de milhar); categorias: `hidraulica, eletrica, mecanica, estrutural,
-servicos`; tipos: `preventiva, corretiva, inspecao`; todo `documento` citado precisa existir em
-`documentos/<categoria>/` (PDF ou imagem PNG/JPG); IDs referenciados precisam existir; arquivo
-presente em `documentos/` sem linha no manifesto gera **aviso**.
+**Regras que o validador cobra:** datas `AAAA-MM-DD` ou `DD/MM/AAAA`; meses `AAAA-MM`; valores
+`3200.50` ou `3200,50` (sem separador de milhar); categorias: `hidraulica, eletrica, mecanica,
+estrutural, servicos` (documentos aceitam também `assembleias`); tipos: `preventiva, corretiva,
+inspecao`; todo `documento` citado precisa existir (PDF ou imagem PNG/JPG); IDs referenciados
+precisam existir; arquivo em `documentos/` sem linha no manifesto gera **aviso**.
+
+### Alerta semanal por e-mail (opcional)
+
+O workflow `.github/workflows/alerta.yml` roda toda segunda às 09h e envia à síndica o que está
+atrasado/vencendo (manutenções, validades, contratos e orçamentos pendentes). Para ativar,
+cadastre em **Settings → Secrets and variables → Actions**:
+
+`ALERTA_SMTP_HOST`, `ALERTA_SMTP_PORT` (587 ou 465), `ALERTA_SMTP_USER`, `ALERTA_SMTP_PASS`,
+`ALERTA_EMAIL_DE`, `ALERTA_EMAIL_PARA`
+
+Sem os secrets, o workflow roda em modo teste e não envia nada. Teste local:
+`python3 scripts/alerta_email.py` (após gerar os dados).
 
 ### Visibilidade: público vs. administrativo
 
@@ -91,6 +107,7 @@ npm install
 npm run dev                           # dev server
 npm run build                         # gera dist/ (index.html único + dados + PDFs)
 npm run gerar:local                   # gera dist-local/ COMPLETO (com administrativos)
+node scripts/gerar_qr.mjs             # regenera o QR do portal (SITE_URL=... para trocar a URL)
 python3 -m http.server 8123 -d dist   # serve a versão de produção p/ testar
 ```
 

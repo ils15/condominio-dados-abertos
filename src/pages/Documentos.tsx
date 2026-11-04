@@ -26,7 +26,9 @@ export default function Documentos() {
           .toLowerCase().includes(q),
     )
 
-  const porCategoria = dados.categorias
+  const catsDoc = dados.categorias_doc?.length ? dados.categorias_doc : dados.categorias
+
+  const porCategoria = catsDoc
     .map((c) => ({ categoria: c, itens: filtrados.filter((d) => d.categoria === c) }))
     .filter((g) => g.itens.length > 0)
 
@@ -74,8 +76,8 @@ export default function Documentos() {
             <RotuloFiltro>Categoria</RotuloFiltro>
             <select className={inputBase} value={categoria} onChange={(e) => setCategoria(e.target.value)}>
               <option value="todas">Todas</option>
-              {dados.categorias.map((c) => (
-                <option key={c} value={c}>{META_CATEGORIA[c].rotulo}</option>
+              {catsDoc.map((c) => (
+                <option key={c} value={c}>{META_CATEGORIA[c as keyof typeof META_CATEGORIA].rotulo}</option>
               ))}
             </select>
           </CampoFiltro>

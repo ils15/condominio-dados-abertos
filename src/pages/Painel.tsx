@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import {
-  Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis,
+  Bar, BarChart, CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts'
 import { AlertTriangle, ArrowRight, CalendarClock, Calculator, CircleDollarSign, Wrench } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { META_CATEGORIA, META_STATUS, badgeCategoria, dados } from '../dados'
 import { diasTexto, mesCurto, moeda, moedaCurta, dataPt } from '../format'
+import type { ConsumoRow } from '../tipos'
 import { Badge, Card, Vazio, cardBase } from '../ui'
 import { useBusca } from '../Layout'
 
@@ -213,6 +214,23 @@ export default function Painel() {
             </Card>
           </div>
 
+          {dados.consumo.length > 1 && (
+            <Card titulo="Consumo das áreas comuns — últimos 12 meses">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <GraficoConsumo
+                  rotulo="Água (m³)"
+                  cor="#0ea5e9"
+                  dados={dados.consumo.map((c: ConsumoRow) => ({ rotulo: mesCurto(c.mes), valor: Number(c.agua_m3.replace(',', '.')) }))}
+                />
+                <GraficoConsumo
+                  rotulo="Energia (kWh)"
+                  cor="#f59e0b"
+                  dados={dados.consumo.map((c: ConsumoRow) => ({ rotulo: mesCurto(c.mes), valor: Number(c.energia_kwh.replace(',', '.')) }))}
+                />
+              </div>
+            </Card>
+          )}
+
           {atrasadas.length > 0 && (
             <Card
               titulo={
@@ -262,8 +280,7 @@ export default function Painel() {
   )
 }
 
-function ListaProximas({ itens }: { itens: typeof dados.cronograma }) {
-  return (
+function ListaProximas({ itens }: { itens: typeof dados.cronograma }) {  return (
     <ul className="divide-y divide-zinc-100 dark:divide-zinc-800">
       {itens.map((c) => (
         <li key={c.id} className="flex flex-wrap items-center gap-x-4 gap-y-1 py-2.5 first:pt-0 last:pb-0">
@@ -284,5 +301,41 @@ function ListaProximas({ itens }: { itens: typeof dados.cronograma }) {
         </li>
       ))}
     </ul>
+  )
+}
+
+function GraficoConsumo({ rotulo, cor, dados: linhas }: {
+  rotulo: string; cor: string; dados: { rotulo: string; valor: number }[]
+}) {
+  const primeiro = linhas[0]?.valor ?? 0
+  const ultimo = linhas[linhas.length - 1]?.valor ?? 0
+  const variacao = primeiro ? ((ultimo - primeiro) / primeiro) * 100 : 0
+  return (
+    <div>
+      <p className="mb-1 flex items-baseline gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+        {rotulo}
+        <span className={`tabular-nums font-medium ${variacao <= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-500'}`}>
+          {variacao > 0 ? '▲' : '▼'} {Math.abs(variacao).toFixed(0).replace('.', ',')}% no período
+        </span>
+      </p>
+      <div className="h-36">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={linhas} margin={{ top: 6, right: 6, left: -18, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="currentColor" className="text-zinc-200 dark:text-zinc-800" />
+            <XAxis dataKey="rotulo" tickLine={false} axisLine={false} tick={{ fontSize: 10, fill: '#a1a1aa' }} interval="preserveStartEnd" />
+            <YAxis tickLine={false} axisLine={false} width={44} tick={{ fontSize: 10, fill: '#a1a1aa' }} />
+            <Tooltip
+              content={({ active, payload }) => {
+                const p = payload?.[0]
+                return p && active ? (
+                  <TooltipGrafico ativo={1} rotulo={String(p.payload.rotulo)} valor={`${Number(p.value).toLocaleString('pt-BR')} ${rotulo.includes('Água') ? 'm³' : 'kWh'}`} />
+                ) : null
+              }}
+            />
+            <Line type="monotone" dataKey="valor" stroke={cor} strokeWidth={2} dot={false} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   )
 }

@@ -39,6 +39,26 @@ const RECURSOS = [
     titulo: 'Orçamentos',
     descricao: 'Cotações recebidas com status (aguardando/aprovado/rejeitado) e vínculo com o plano de manutenção.',
   },
+  {
+    nome: 'orcamento_anual',
+    titulo: 'Previsão orçamentária anual',
+    descricao: 'Valores previstos por categoria, aprovados em assembleia — compare com o histórico para ver o executado.',
+  },
+  {
+    nome: 'balancetes',
+    titulo: 'Balancetes mensais e inadimplência',
+    descricao: 'Receitas, despesas, fundo de reserva e taxa de inadimplência agregada por mês (sem dados por unidade — LGPD).',
+  },
+  {
+    nome: 'assembleias',
+    titulo: 'Assembleias',
+    descricao: 'Convocações e atas com pauta e quórum de cada assembleia geral.',
+  },
+  {
+    nome: 'consumo',
+    titulo: 'Consumo de água e energia',
+    descricao: 'Consumo mensal das áreas comuns (m³ e kWh) com os respectivos custos.',
+  },
 ] as const
 
 export default function DadosAbertos() {
@@ -90,6 +110,25 @@ export default function DadosAbertos() {
       </Card>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Card titulo="Divulgue o portal aos moradores">
+          <div className="flex flex-wrap items-center gap-5">
+            <img
+              src="./qr-code.svg"
+              alt="QR code do portal"
+              className="h-36 w-36 rounded-xl border border-zinc-200 bg-white p-2 dark:border-zinc-700"
+            />
+            <div className="min-w-0 text-sm text-zinc-600 dark:text-zinc-300">
+              <p className="leading-relaxed">
+                Aponte a câmera do celular ou imprima este QR no quadro de avisos ou elevador.
+                O portal também pode ser <b>instalado como app</b>: no navegador do celular,
+                use “Adicionar à tela de início”.
+              </p>
+              <p className="mt-2 rounded-lg bg-zinc-100 px-3 py-1.5 font-mono text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+                ils15.github.io/condominio-dados-abertos
+              </p>
+            </div>
+          </div>
+        </Card>
         <Card titulo={<span className="flex items-center gap-2"><GitBranch className="h-4 w-4 text-blue-600 dark:text-blue-400" /> Como os dados são atualizados</span>}>
           <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
             <li>Os arquivos <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">dados/*.csv</code> são a fonte da verdade — editáveis em Excel/LibreOffice ou direto no GitHub.</li>

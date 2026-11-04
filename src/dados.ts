@@ -1,4 +1,4 @@
-import type { Categoria, Dados, StatusCronograma } from './tipos'
+import type { CategoriaDoc, Dados, StatusCronograma } from './tipos'
 
 declare global {
   interface Window {
@@ -12,6 +12,7 @@ const vazio: Dados = {
   perfil: 'publico',
   condominio: { nome: 'Condomínio', aviso: '' },
   categorias: [],
+  categorias_doc: [],
   ativos: [],
   prestadores: [],
   cronograma: [],
@@ -19,6 +20,10 @@ const vazio: Dados = {
   documentos: [],
   contratos: [],
   orcamentos: [],
+  orcamento: [],
+  balancetes: [],
+  assembleias: [],
+  consumo: [],
   agregacoes: {
     por_categoria_12m: [],
     por_mes: [],
@@ -27,6 +32,7 @@ const vazio: Dados = {
       corretivas_12m: 0, atrasadas: 0, vencendo_30d: 0, custo_anual_estimado: 0, n_ativos: 0,
       n_documentos: 0, docs_vencidos: 0, docs_vencendo: 0, contratos_ativos: 0,
       contratos_mensal_total: 0, orcamentos_aguardando: 0, orcamentos_aguardando_total: 0,
+      inadimplencia_atual: null, proxima_assembleia: null,
     },
   },
 }
@@ -38,7 +44,7 @@ if (!window.__DATA__) {
 }
 
 /** Metadados visuais por categoria (cor do gráfico + classes de badge). */
-export const META_CATEGORIA: Record<Categoria, { rotulo: string; cor: string; badge: string }> = {
+export const META_CATEGORIA: Record<CategoriaDoc, { rotulo: string; cor: string; badge: string }> = {
   hidraulica: {
     rotulo: 'Hidráulica',
     cor: '#0ea5e9',
@@ -64,10 +70,17 @@ export const META_CATEGORIA: Record<Categoria, { rotulo: string; cor: string; ba
     cor: '#10b981',
     badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300',
   },
+  assembleias: {
+    rotulo: 'Assembleias',
+    cor: '#6366f1',
+    badge: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300',
+  },
 }
 
-export const rotuloCategoria = (c: string): string => META_CATEGORIA[c as Categoria]?.rotulo ?? c
-export const badgeCategoria = (c: string): string => META_CATEGORIA[c as Categoria]?.badge ?? ''
+export const rotuloCategoria = (c: string): string =>
+  META_CATEGORIA[c as CategoriaDoc]?.rotulo ?? c
+export const badgeCategoria = (c: string): string =>
+  META_CATEGORIA[c as CategoriaDoc]?.badge ?? ''
 
 export const META_STATUS: Record<StatusCronograma, { rotulo: string; badge: string }> = {
   atrasado: {
@@ -113,6 +126,19 @@ export const META_TIPO_DOC: Record<string, { rotulo: string }> = {
   laudo: { rotulo: 'Laudo' },
   parecer: { rotulo: 'Parecer' },
   art: { rotulo: 'ART/RRT' },
+  ata: { rotulo: 'Ata' },
+  convocacao: { rotulo: 'Convocação' },
+}
+
+export const META_ASSEMBLEIA: Record<string, { rotulo: string; badge: string }> = {
+  ordinaria: {
+    rotulo: 'Ordinária',
+    badge: 'bg-blue-100 text-blue-700 dark:bg-blue-400/15 dark:text-blue-300',
+  },
+  extraordinaria: {
+    rotulo: 'Extraordinária',
+    badge: 'bg-violet-100 text-violet-700 dark:bg-violet-400/15 dark:text-violet-300',
+  },
 }
 
 export const META_STATUS_VALIDADE: Record<string, { rotulo: string; badge: string }> = {
