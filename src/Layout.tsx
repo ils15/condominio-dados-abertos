@@ -15,17 +15,38 @@ const BuscaCtx = createContext<{ consulta: string; setConsulta: (v: string) => v
 export const useBusca = () => useContext(BuscaCtx)
 
 /* ------------------------------------------------------------------------- nav */
-const ITENS = [
-  { para: '/', rotulo: 'Painel', icone: LayoutDashboard, fim: true },
-  { para: '/calendario', rotulo: 'Calendário', icone: CalendarDays },
-  { para: '/cronograma', rotulo: 'Cronograma', icone: CalendarClock },
-  { para: '/historico', rotulo: 'Histórico', icone: History },
-  { para: '/compras', rotulo: 'Compras', icone: ShoppingCart },
-  { para: '/financeiro', rotulo: 'Financeiro', icone: ReceiptText },
-  { para: '/assembleias', rotulo: 'Assembleias', icone: Vote },
-  { para: '/prestadores', rotulo: 'Prestadores', icone: Users },
-  { para: '/documentos', rotulo: 'Documentos', icone: FolderOpen },
-  { para: '/dados-abertos', rotulo: 'Dados abertos', icone: Database },
+/** Menu agrupado por finalidade — cada grupo conta uma "história" do portal. */
+const GRUPOS: { rotulo: string; itens: { para: string; rotulo: string; icone: typeof Vote; fim?: boolean }[] }[] = [
+  {
+    rotulo: 'Visão geral',
+    itens: [
+      { para: '/', rotulo: 'Painel', icone: LayoutDashboard, fim: true },
+      { para: '/calendario', rotulo: 'Calendário', icone: CalendarDays },
+    ],
+  },
+  {
+    rotulo: 'Manutenção · NBR 5674',
+    itens: [
+      { para: '/cronograma', rotulo: 'Cronograma', icone: CalendarClock },
+      { para: '/historico', rotulo: 'Histórico', icone: History },
+      { para: '/prestadores', rotulo: 'Prestadores', icone: Users },
+    ],
+  },
+  {
+    rotulo: 'Transparência',
+    itens: [
+      { para: '/financeiro', rotulo: 'Financeiro', icone: ReceiptText },
+      { para: '/compras', rotulo: 'Compras', icone: ShoppingCart },
+      { para: '/assembleias', rotulo: 'Assembleias', icone: Vote },
+    ],
+  },
+  {
+    rotulo: 'Acervo',
+    itens: [
+      { para: '/documentos', rotulo: 'Documentos', icone: FolderOpen },
+      { para: '/dados-abertos', rotulo: 'Dados abertos', icone: Database },
+    ],
+  },
 ]
 
 function TemaToggle() {
@@ -65,24 +86,33 @@ function Logo() {
 
 function NavLinks({ aoNavegar }: { aoNavegar?: () => void }) {
   return (
-    <nav className="flex flex-col gap-0.5">
-      {ITENS.map(({ para, rotulo, icone: Icone, fim }) => (
-        <NavLink
-          key={para}
-          to={para}
-          end={fim}
-          onClick={aoNavegar}
-          className={({ isActive }) =>
-            `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
-              isActive
-                ? 'bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50'
-                : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100'
-            }`
-          }
-        >
-          <Icone className="h-4 w-4 shrink-0" />
-          {rotulo}
-        </NavLink>
+    <nav className="flex flex-col gap-5">
+      {GRUPOS.map((grupo) => (
+        <div key={grupo.rotulo}>
+          <p className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            {grupo.rotulo}
+          </p>
+          <div className="flex flex-col gap-0.5">
+            {grupo.itens.map(({ para, rotulo, icone: Icone, fim }) => (
+              <NavLink
+                key={para}
+                to={para}
+                end={fim}
+                onClick={aoNavegar}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+                    isActive
+                      ? 'bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50'
+                      : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100'
+                  }`
+                }
+              >
+                <Icone className="h-4 w-4 shrink-0" />
+                {rotulo}
+              </NavLink>
+            ))}
+          </div>
+        </div>
       ))}
     </nav>
   )
