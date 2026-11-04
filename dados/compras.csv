@@ -1,0 +1,9 @@
+id;data;descricao;categoria;fornecedor;cnpj;valor;documento;observacoes
+C-001;2025-11-20;Material de limpeza — estoque dez/2025;servicos;Clean Supply Distribuidora;12.345.678/0001-55;720.00;;
+C-002;2026-01-15;Material de limpeza — janeiro;servicos;Clean Supply Distribuidora;12.345.678/0001-55;680.00;documentos/servicos/2026-01-nf-material-limpeza.pdf;
+C-003;2026-03-02;Lote de 24 lâmpadas LED (corredores);eletrica;LuzPrime Materiais Elétricos;98.765.432/0001-10;520.00;documentos/eletrica/2026-03-nf-lampadas-led.pdf;
+C-004;2026-05-10;Kit de reparo para vazamentos (epóxi e conexões);hidraulica;Hidro Peças ME;32.165.498/0001-77;340.00;;
+C-005;2026-06-18;Tinta acrílica e selante para pontos da fachada;estrutural;TudoTinta Comércio;44.332.211/0001-66;890.00;;
+C-006;2026-08-22;Capacitor e fusíveis do motor do portão;mecanica;Portões & Cia Peças;55.443.322/0001-99;180.00;documentos/mecanica/2026-08-nf-pecas-portao.pdf;Insumo da corretiva M-041
+C-007;2026-09-30;Recarga de 2 extintores PQS 4kg;hidraulica;Seg Fire Extintores;66.554.433/0001-88;260.00;;
+C-008;2026-10-12;Adubos e mudas para jardins;servicos;Garden Center Paulista;77.665.544/0001-22;310.00;;

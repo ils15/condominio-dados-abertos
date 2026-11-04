@@ -4,6 +4,7 @@ import Painel from './pages/Painel'
 import Calendario from './pages/Calendario'
 import Cronograma from './pages/Cronograma'
 import Historico from './pages/Historico'
+import Compras from './pages/Compras'
 import Financeiro from './pages/Financeiro'
 import Assembleias from './pages/Assembleias'
 import Prestadores from './pages/Prestadores'
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="calendario" element={<Calendario />} />
         <Route path="cronograma" element={<Cronograma />} />
         <Route path="historico" element={<Historico />} />
+        <Route path="compras" element={<Compras />} />
         <Route path="financeiro" element={<Financeiro />} />
         <Route path="assembleias" element={<Assembleias />} />
         <Route path="prestadores" element={<Prestadores />} />

@@ -125,6 +125,7 @@ export default function Documentos() {
                         )}
                         {d.prestador_nome && ` · ${d.prestador_nome}`}
                         {d.manutencao_descricao && ` · vinculado a: ${d.manutencao_descricao}`}
+                        {d.contrato_objeto && ` · contrato: ${d.contrato_objeto}`}
                         {` · ${d.extensao.toUpperCase()} ${d.tamanho != null ? bytes(d.tamanho) : ''}`}
                       </span>
                       {d.art_rrt && (

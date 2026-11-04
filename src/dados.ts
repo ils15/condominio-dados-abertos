@@ -20,6 +20,7 @@ const vazio: Dados = {
   documentos: [],
   contratos: [],
   orcamentos: [],
+  compras: [],
   orcamento: [],
   balancetes: [],
   assembleias: [],
@@ -33,6 +34,7 @@ const vazio: Dados = {
       n_documentos: 0, docs_vencidos: 0, docs_vencendo: 0, contratos_ativos: 0,
       contratos_mensal_total: 0, orcamentos_aguardando: 0, orcamentos_aguardando_total: 0,
       inadimplencia_atual: null, proxima_assembleia: null,
+      n_compras: 0, compras_12m: 0, compras_ano_atual: 0,
     },
   },
 }

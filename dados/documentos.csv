@@ -1,20 +1,26 @@
-id;titulo;categoria;arquivo;tipo;data_emissao;validade;prestador_id;art_rrt;manutencao_id;visibilidade;observacoes
-D-01;Relatório de manutenção preventiva — elevador social (fev/26);mecanica;documentos/mecanica/2026-02-relatorio-elevador-social.pdf;relatorio;2026-02-05;;PR-01;;M-030;publico;
-D-02;Relatório de manutenção preventiva — elevador social (out/26);mecanica;documentos/mecanica/2026-10-relatorio-elevador-social.pdf;relatorio;2026-10-08;;PR-01;;M-045;publico;
-D-03;Ordem de serviço — reparo do portão da garagem;mecanica;documentos/mecanica/2026-08-reparo-portao.pdf;ordem_servico;2026-08-19;;;;M-041;publico;
-D-04;Nota fiscal — troca do motor da bomba 2;hidraulica;documentos/hidraulica/2024-07-troca-motor-bomba-2.pdf;nota_fiscal;2024-07-16;;PR-02;;M-013;publico;
-D-05;Ordem de serviço — reparo de vazamento na rede de entrada;hidraulica;documentos/hidraulica/2025-02-reparo-vazamento.pdf;ordem_servico;2025-02-11;;PR-02;;M-023;publico;
-D-06;Certificado de limpeza — caixa d'água superior;hidraulica;documentos/hidraulica/2026-08-limpeza-caixa-agua.pdf;certificado;2026-08-01;2027-01-28;PR-02;;M-040;publico;Validade de 6 meses conforme Vigilância Sanitária
-D-07;Relatório termográfico — quadro geral de energia;eletrica;documentos/eletrica/2026-09-termografia-qgi.pdf;laudo;2026-09-03;2027-09-02;PR-03;;M-042;publico;
-D-08;Laudo de vistoria — fachada e esquadrias;estrutural;documentos/estrutural/2024-10-vistoria-fachada.pdf;laudo;2024-10-20;2025-10-19;PR-05;ART 2024/1102345678 (CREA);M-018;publico;Vencido — nova vistoria em cotação (CR-11)
-D-09;Ordem de serviço — impermeabilização da laje;estrutural;documentos/estrutural/2024-11-manutencao-laje.pdf;ordem_servico;2024-11-12;;PR-04;;M-019;publico;
-D-10;Ordem de serviço — substituição de DVR e câmeras;servicos;documentos/servicos/2025-06-troca-dvr.pdf;ordem_servico;2025-06-30;;PR-08;;M-026;publico;
-D-11;Contrato de limpeza e conservação 2026;servicos;documentos/servicos/2026-contrato-limpeza.pdf;contrato;2026-01-01;2026-12-31;PR-06;;;publico;Aprovado em assembleia de 10/12/2025
-D-12;Laudo do SPDA — proteção contra descargas atmosféricas;eletrica;documentos/eletrica/2025-11-laudo-spda.pdf;laudo;2025-11-20;2026-11-20;PR-03;ART 2025/9908776655 (CREA);;publico;Inspeção anual obrigatória
-D-13;Relatório fotográfico — manutenção da laje (foto 1);estrutural;documentos/estrutural/2023-04-fotos-laje-1.png;relatorio_fotografico;2023-04-11;;PR-04;;M-005;publico;
-D-14;Relatório fotográfico — manutenção da laje (foto 2);estrutural;documentos/estrutural/2023-04-fotos-laje-2.png;relatorio_fotografico;2023-04-11;;PR-04;;M-005;publico;
-D-15;Folha de pagamento — outubro/2026;servicos;documentos/servicos/2026-folha-pagamento.pdf;relatorio;2026-10-31;;;;;administrativo;Contém dados pessoais (LGPD) — só na cópia local completa
-D-16;Parecer jurídico — danos por vazamento na unidade 42;servicos;documentos/servicos/2025-03-parecer-juridico.pdf;parecer;2025-03-18;;;;;administrativo;Sigilo advogado-condomínio — só na cópia local completa
-D-17;Ata da AGE — aprovação de contratos 2026;assembleias;documentos/assembleias/2025-12-ata-age-contratos.pdf;ata;2025-12-10;;;;;publico;32 de 48 unidades presentes
-D-18;Ata da AGO — contas 2025 e orçamento 2026;assembleias;documentos/assembleias/2026-03-ata-ago.pdf;ata;2026-03-14;;;;;publico;41 de 48 unidades presentes
-D-19;Convocação — AGE laje e fachada;assembleias;documentos/assembleias/2026-11-convocacao-age-laje.pdf;convocacao;2026-10-20;2026-11-18;;;;publico;Assembleia marcada para 18/11/2026
+id;titulo;categoria;arquivo;tipo;data_emissao;validade;prestador_id;art_rrt;manutencao_id;contrato_id;visibilidade;observacoes
+D-01;Relatório de manutenção preventiva — elevador social (fev/26);mecanica;documentos/mecanica/2026-02-relatorio-elevador-social.pdf;relatorio;2026-02-05;;PR-01;;M-030;;publico;
+D-02;Relatório de manutenção preventiva — elevador social (out/26);mecanica;documentos/mecanica/2026-10-relatorio-elevador-social.pdf;relatorio;2026-10-08;;PR-01;;M-045;;publico;
+D-03;Ordem de serviço — reparo do portão da garagem;mecanica;documentos/mecanica/2026-08-reparo-portao.pdf;ordem_servico;2026-08-19;;;;M-041;;publico;Peças faturadas na compra C-006
+D-04;Nota fiscal — troca do motor da bomba 2;hidraulica;documentos/hidraulica/2024-07-troca-motor-bomba-2.pdf;nota_fiscal;2024-07-16;;PR-02;;M-013;;publico;
+D-05;Ordem de serviço — reparo de vazamento na rede de entrada;hidraulica;documentos/hidraulica/2025-02-reparo-vazamento.pdf;ordem_servico;2025-02-11;;PR-02;;M-023;;publico;
+D-06;Certificado de limpeza — caixa d'água superior;hidraulica;documentos/hidraulica/2026-08-limpeza-caixa-agua.pdf;certificado;2026-08-01;2027-01-28;PR-02;;M-040;;publico;Validade de 6 meses conforme Vigilância Sanitária
+D-07;Relatório termográfico — quadro geral de energia;eletrica;documentos/eletrica/2026-09-termografia-qgi.pdf;laudo;2026-09-03;2027-09-02;PR-03;;M-042;;publico;
+D-08;Laudo de vistoria — fachada e esquadrias;estrutural;documentos/estrutural/2024-10-vistoria-fachada.pdf;laudo;2024-10-20;2025-10-19;PR-05;ART 2024/1102345678 (CREA);M-018;;publico;Vencido — nova vistoria em cotação (CR-11)
+D-09;Ordem de serviço — impermeabilização da laje;estrutural;documentos/estrutural/2024-11-manutencao-laje.pdf;ordem_servico;2024-11-12;;PR-04;;M-019;;publico;
+D-10;Ordem de serviço — substituição de DVR e câmeras;servicos;documentos/servicos/2025-06-troca-dvr.pdf;ordem_servico;2025-06-30;;PR-08;;M-026;;publico;
+D-11;Contrato de limpeza e conservação 2026;servicos;documentos/servicos/2026-contrato-limpeza.pdf;contrato;2026-01-01;2026-12-31;PR-06;;;CT-01;publico;Aprovado em assembleia de 10/12/2025
+D-12;Laudo do SPDA — proteção contra descargas atmosféricas;eletrica;documentos/eletrica/2025-11-laudo-spda.pdf;laudo;2025-11-20;2026-11-20;PR-03;ART 2025/9908776655 (CREA);;;publico;Inspeção anual obrigatória
+D-13;Relatório fotográfico — manutenção da laje (foto 1);estrutural;documentos/estrutural/2023-04-fotos-laje-1.png;relatorio_fotografico;2023-04-11;;PR-04;;M-005;;publico;
+D-14;Relatório fotográfico — manutenção da laje (foto 2);estrutural;documentos/estrutural/2023-04-fotos-laje-2.png;relatorio_fotografico;2023-04-11;;PR-04;;M-005;;publico;
+D-15;Folha de pagamento — outubro/2026;servicos;documentos/servicos/2026-folha-pagamento.pdf;relatorio;2026-10-31;;;;;;administrativo;Contém dados pessoais (LGPD) — só na cópia local completa
+D-16;Parecer jurídico — danos por vazamento na unidade 42;servicos;documentos/servicos/2025-03-parecer-juridico.pdf;parecer;2025-03-18;;;;;;administrativo;Sigilo advogado-condomínio — só na cópia local completa
+D-17;Ata da AGE — aprovação de contratos 2026;assembleias;documentos/assembleias/2025-12-ata-age-contratos.pdf;ata;2025-12-10;;;;;;publico;32 de 48 unidades presentes
+D-18;Ata da AGO — contas 2025 e orçamento 2026;assembleias;documentos/assembleias/2026-03-ata-ago.pdf;ata;2026-03-14;;;;;;publico;41 de 48 unidades presentes
+D-19;Convocação — AGE laje e fachada;assembleias;documentos/assembleias/2026-11-convocacao-age-laje.pdf;convocacao;2026-10-20;2026-11-18;;;;;publico;Assembleia marcada para 18/11/2026
+D-20;Nota fiscal — material de limpeza (jan/26);servicos;documentos/servicos/2026-01-nf-material-limpeza.pdf;nota_fiscal;2026-01-15;;;;;;publico;Vinculada à compra C-002
+D-21;Nota fiscal — lote de lâmpadas LED;eletrica;documentos/eletrica/2026-03-nf-lampadas-led.pdf;nota_fiscal;2026-03-02;;;;;;publico;Vinculada à compra C-003
+D-22;Nota fiscal — peças do motor do portão;mecanica;documentos/mecanica/2026-08-nf-pecas-portao.pdf;nota_fiscal;2026-08-22;;;;;;publico;Insumo da corretiva M-041 (compra C-006)
+D-23;Relatório mensal — limpeza (out/26);servicos;documentos/servicos/2026-10-relatorio-mensal-limpeza.pdf;relatorio;2026-10-31;;PR-06;;;CT-01;publico;Aprovado pela síndica em 02/11/2026
+D-24;Relatório de monitoramento (set/26);servicos;documentos/servicos/2026-09-relatorio-monitoramento.pdf;relatorio;2026-09-30;;PR-08;;;CT-03;publico;Sem incidentes no período
+D-25;Relatório de jardinagem (out/26);servicos;documentos/servicos/2026-10-relatorio-jardinagem.pdf;relatorio;2026-10-28;;PR-07;;;CT-02;publico;Adubação com insumos da compra C-008

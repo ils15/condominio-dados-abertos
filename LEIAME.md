@@ -43,7 +43,7 @@ dist/                                  ← 1 único index.html autocontido + dad
 
 Também dá para editar no Excel/LibreOffice e enviar o arquivo pelo botão *Add file → Upload*.
 
-### Os onze conjuntos (delimiter `;`, UTF-8)
+### Os doze conjuntos (delimiter `;`, UTF-8)
 
 | Arquivo | O que registra |
 |---|---|
@@ -58,6 +58,21 @@ Também dá para editar no Excel/LibreOffice e enviar o arquivo pelo botão *Add
 | `balancetes.csv` | **Balancete mensal**: mês (`AAAA-MM`), receita de taxas, outras receitas, despesas, fundo de reserva, inadimplência % (agregada — nunca por unidade) |
 | `assembleias.csv` | Assembleias: data, tipo (ordinária/extraordinária), pauta, presentes/unidades (quórum) e a ata/convocação em `documentos/assembleias/` |
 | `consumo.csv` | Consumo mensal das áreas comuns: água (m³), energia (kWh) e custos |
+| `compras.csv` | **Compras de materiais/insumos**: data, descrição, categoria, fornecedor (+CNPJ), valor e a nota fiscal vinculada |
+
+### Como "subir" um documento ou nota fiscal (receita da síndica)
+
+1. No repositório GitHub, abra a pasta `documentos/<categoria>/` → **Add file → Upload files**
+   e arraste o PDF (nota fiscal, relatório, laudo…).
+2. Edite `dados/documentos.csv` → adicione uma linha (título, tipo, emissão/validade,
+   prestador/vínculos, visibilidade). Para nota fiscal de compra, edite também
+   `dados/compras.csv` com valor e fornecedor.
+3. Commit — o validador confere tudo (arquivo existe, datas, valores, referências) e o
+   site publica sozinho. Se algo estiver errado, o erro aparece em português na Action.
+
+Relatório mensal de prestador (limpeza, segurança…): salve o PDF em
+`documentos/servicos/`, cadastre em `documentos.csv` com `tipo=relatorio` e o
+`contrato_id` correspondente — ele aparece na página Documentos vinculado ao contrato.
 
 **Regras que o validador cobra:** datas `AAAA-MM-DD` ou `DD/MM/AAAA`; meses `AAAA-MM`; valores
 `3200.50` ou `3200,50` (sem separador de milhar); categorias: `hidraulica, eletrica, mecanica,

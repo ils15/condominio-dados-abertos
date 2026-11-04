@@ -47,7 +47,7 @@ export default function Financeiro() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <div className={`${cardBase} px-5 py-4`}>
           <span className="block text-[11px] font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
             Contratos vigentes
@@ -92,6 +92,15 @@ export default function Financeiro() {
           </span>
           <span className="block text-xs text-zinc-500 dark:text-zinc-400">
             {orcamento ? `${moeda(orcamento.realizado_total)} de ${moeda(orcamento.previsto_total)} previstos` : ''}
+          </span>
+        </div>
+        <div className={`${cardBase} px-5 py-4`}>
+          <span className="block text-[11px] font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+            Compras — 12 meses
+          </span>
+          <span className="block text-xl font-semibold tabular-nums">{moeda(t.compras_12m)}</span>
+          <span className="block text-xs text-zinc-500 dark:text-zinc-400">
+            materiais e insumos com NF
           </span>
         </div>
       </div>

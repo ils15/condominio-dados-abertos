@@ -114,8 +114,8 @@ export default function Painel() {
             <Kpi
               icone={<CircleDollarSign className="h-5 w-5" />}
               rotulo="Gasto — últimos 12 meses"
-              valor={moedaCurta(t.gasto_12m)}
-              sub={`${t.n_manutencoes_12m} manutenções registradas`}
+              valor={moedaCurta(t.gasto_12m + t.compras_12m)}
+              sub={`${t.n_manutencoes_12m} manutenções + ${moedaCurta(t.compras_12m)} em compras`}
             />
             <Kpi
               icone={<Wrench className="h-5 w-5" />}

@@ -82,15 +82,29 @@ export interface Documento {
   prestador_id: string
   art_rrt: string
   manutencao_id: string
+  contrato_id: string
   visibilidade: 'publico' | 'administrativo'
   observacoes: string
   // derivados
   status_validade: StatusValidade
   prestador_nome: string | null
   manutencao_descricao: string | null
+  contrato_objeto: string | null
   administrativo: boolean
   tamanho: number | null
   extensao: string
+}
+
+export interface Compra {
+  id: string
+  data: string
+  descricao: string
+  categoria: Categoria
+  fornecedor: string
+  cnpj: string
+  valor: string
+  documento: string
+  observacoes: string
 }
 
 export interface Contrato {
@@ -198,6 +212,9 @@ export interface Agregacoes {
     orcamentos_aguardando_total: number
     inadimplencia_atual: number | null
     proxima_assembleia: string | null
+    n_compras: number
+    compras_12m: number
+    compras_ano_atual: number
   }
 }
 
@@ -215,6 +232,7 @@ export interface Dados {
   documentos: Documento[]
   contratos: Contrato[]
   orcamentos: Orcamento[]
+  compras: Compra[]
   orcamento: OrcamentoAno[]
   balancetes: Balancete[]
   assembleias: Assembleia[]

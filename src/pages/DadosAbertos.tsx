@@ -59,6 +59,11 @@ const RECURSOS = [
     titulo: 'Consumo de água e energia',
     descricao: 'Consumo mensal das áreas comuns (m³ e kWh) com os respectivos custos.',
   },
+  {
+    nome: 'compras',
+    titulo: 'Compras de materiais e insumos',
+    descricao: 'Aquisições com fornecedor, valor e nota fiscal vinculada — a página Compras mostra o mesmo conjunto.',
+  },
 ] as const
 
 export default function DadosAbertos() {

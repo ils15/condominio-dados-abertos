@@ -124,7 +124,7 @@ def erro(msg: str) -> None:
 
 # --------------------------------------------------------------------- validação
 def validar(hoje, ativos, prestadores, cronograma, manutencoes, documentos, contratos,
-            orcamentos, orcamento_anual, balancetes, assembleias, consumo):
+            orcamentos, orcamento_anual, balancetes, assembleias, consumo, compras):
     erros: list[str] = []
     avisos: list[str] = []
     ids_ativos = {a["id"] for a in ativos}
@@ -132,6 +132,7 @@ def validar(hoje, ativos, prestadores, cronograma, manutencoes, documentos, cont
     ids_manutencoes = {m["id"] for m in manutencoes}
     ids_cronograma: set[str] = set()
     ids_orcamentos = {o["id"] for o in orcamentos}
+    ids_contratos = {c["id"] for c in contratos}
 
     for i, a in enumerate(ativos, start=2):
         ctx = f"ativos.csv linha {i}"
@@ -221,6 +222,8 @@ def validar(hoje, ativos, prestadores, cronograma, manutencoes, documentos, cont
             erros.append(f"{ctx}: prestador_id '{d['prestador_id']}' não existe em prestadores.csv")
         if d["manutencao_id"] and d["manutencao_id"] not in ids_manutencoes:
             erros.append(f"{ctx}: manutencao_id '{d['manutencao_id']}' não existe em manutencoes.csv")
+        if d["contrato_id"] and d["contrato_id"] not in ids_contratos:
+            erros.append(f"{ctx}: contrato_id '{d['contrato_id']}' não existe em contratos.csv")
         if d["visibilidade"] not in VISIBILIDADES:
             erros.append(f"{ctx}: visibilidade '{d['visibilidade']}' inválida (use: publico ou administrativo)")
 
@@ -315,6 +318,26 @@ def validar(hoje, ativos, prestadores, cronograma, manutencoes, documentos, cont
         if presentes is not None and unidades is not None and presentes > unidades:
             erros.append(f"{ctx}: presentes ({a['presentes']}) maior que unidades ({a['unidades']})")
 
+    # ---- compras (materiais e insumos, com nota fiscal) ----
+    ids_compras = set()
+    for i, c in enumerate(compras, start=2):
+        ctx = f"compras.csv linha {i} ({c['id'] or 'sem id'})"
+        if not c["id"]:
+            erros.append(f"{ctx}: id vazio")
+            continue
+        if c["id"] in ids_compras:
+            erros.append(f"{ctx}: id duplicado")
+        ids_compras.add(c["id"])
+        parse_data(c["data"], ctx, erros)
+        if c["categoria"] not in CATEGORIAS:
+            erros.append(f"{ctx}: categoria '{c['categoria']}' inválida (use: {', '.join(CATEGORIAS)})")
+        if not c["fornecedor"]:
+            erros.append(f"{ctx}: fornecedor é obrigatório")
+        if not (parse_valor(c["valor"], ctx, erros) or 0) > 0:
+            erros.append(f"{ctx}: valor deve ser maior que zero")
+        if c["documento"] and not (RAIZ / c["documento"]).exists():
+            erros.append(f"{ctx}: documento '{c['documento']}' não existe")
+
     # ---- consumo ----
     meses_consumo = set()
     for i, c in enumerate(consumo, start=2):
@@ -391,9 +414,10 @@ def calcular_cronograma(hoje: date, ativos, prestadores, cronograma, manutencoes
     return resultado
 
 
-def calcular_documentos(hoje: date, documentos, prestadores, manutencoes):
+def calcular_documentos(hoje: date, documentos, prestadores, manutencoes, contratos):
     prest_por_id = {p["id"]: p for p in prestadores}
     manu_por_id = {m["id"]: m for m in manutencoes}
+    contrato_por_id = {c["id"]: c for c in contratos}
     resultado = []
     for d in documentos:
         validade = parse_data(d["validade"], f"documento {d['id']}", [])
@@ -405,11 +429,13 @@ def calcular_documentos(hoje: date, documentos, prestadores, manutencoes):
             status_val = "vence_breve"
         else:
             status_val = "valido"
+        contrato = contrato_por_id.get(d["contrato_id"]) if d["contrato_id"] else None
         resultado.append({
             **d,
             "status_validade": status_val,
             "prestador_nome": prest_por_id.get(d["prestador_id"], {}).get("nome") if d["prestador_id"] else None,
             "manutencao_descricao": manu_por_id.get(d["manutencao_id"], {}).get("descricao") if d["manutencao_id"] else None,
+            "contrato_objeto": contrato.get("objeto") if contrato else None,
             "administrativo": d["visibilidade"] == "administrativo",
             "tamanho": (RAIZ / d["arquivo"]).stat().st_size if (RAIZ / d["arquivo"]).exists() else None,
             "extensao": Path(d["arquivo"]).suffix.lower().lstrip("."),
@@ -507,7 +533,7 @@ def calcular_transparencia(hoje: date, manutencoes, orcamento_anual, balancetes,
     return orcamento, balancetes_calc, assembleias_calc
 
 
-def agregar(hoje: date, manutencoes, cronograma_calc, ativos, documentos_calc, contratos_calc, orcamentos_calc):
+def agregar(hoje: date, manutencoes, cronograma_calc, ativos, documentos_calc, contratos_calc, orcamentos_calc, compras):
     ano_atual = hoje.year
     inicio_12m = add_meses(hoje, -11)
     inicio_12m = date(inicio_12m.year, inicio_12m.month, 1)
@@ -544,6 +570,9 @@ def agregar(hoje: date, manutencoes, cronograma_calc, ativos, documentos_calc, c
     contratos_ativos = [c for c in contratos_calc if c["vigente"]]
     orc_aguardando = [o for o in orcamentos_calc if o["status"] == "aguardando"]
 
+    compras_com_valor = [c for c in compras if c["_valor"] is not None]
+    compras_12m = [c for c in compras_com_valor if c["_data"] >= inicio_12m]
+
     inad_atual = None
     if BALANCETES_CALC:
         inad_atual = parse_valor(BALANCETES_CALC[-1]["inadimplencia_pct"], "balancete", [])
@@ -575,13 +604,17 @@ def agregar(hoje: date, manutencoes, cronograma_calc, ativos, documentos_calc, c
             "orcamentos_aguardando_total": round(sum(o["_valor"] for o in orc_aguardando), 2),
             "inadimplencia_atual": inad_atual,
             "proxima_assembleia": proxima_asm,
+            "n_compras": len(compras),
+            "compras_12m": round(sum(c["_valor"] for c in compras_12m), 2),
+            "compras_ano_atual": round(
+                sum(c["_valor"] for c in compras_com_valor if c["_data"].year == ano_atual), 2),
         },
     }
 
 
 # ---------------------------------------------------------------------- exportações
 def exportar_sqlite(destino: Path, ativos, prestadores, cronograma_calc, manutencoes_calc,
-                     documentos_calc, contratos_calc, orcamentos_calc) -> None:
+                     documentos_calc, contratos_calc, orcamentos_calc, compras_calc) -> None:
     arq = destino / "dados" / "condominio.sqlite"
     if arq.exists():
         arq.unlink()
@@ -601,8 +634,8 @@ def exportar_sqlite(destino: Path, ativos, prestadores, cronograma_calc, manuten
                                   documento TEXT, orcamento_id TEXT, responsavel TEXT);
         CREATE TABLE documentos (id TEXT PRIMARY KEY, titulo TEXT, categoria TEXT, arquivo TEXT,
                                  tipo TEXT, data_emissao TEXT, validade TEXT, prestador_id TEXT,
-                                 art_rrt TEXT, manutencao_id TEXT, visibilidade TEXT,
-                                 status_validade TEXT, observacoes TEXT);
+                                 art_rrt TEXT, manutencao_id TEXT, contrato_id TEXT,
+                                 visibilidade TEXT, status_validade TEXT, observacoes TEXT);
         CREATE TABLE contratos (id TEXT PRIMARY KEY, prestador_id TEXT, objeto TEXT, categoria TEXT,
                                 inicio TEXT, fim TEXT, valor_mensal REAL, status TEXT,
                                 documento TEXT, observacoes TEXT);
@@ -619,6 +652,9 @@ def exportar_sqlite(destino: Path, ativos, prestadores, cronograma_calc, manuten
                                   observacoes TEXT, futura INTEGER, quorum_pct REAL);
         CREATE TABLE consumo (mes TEXT PRIMARY KEY, agua_m3 REAL, energia_kwh REAL,
                               custo_agua REAL, custo_energia REAL);
+        CREATE TABLE compras (id TEXT PRIMARY KEY, data TEXT, descricao TEXT, categoria TEXT,
+                              fornecedor TEXT, cnpj TEXT, valor REAL, documento TEXT,
+                              observacoes TEXT);
         CREATE INDEX idx_manut_data ON manutencoes (data);
         CREATE INDEX idx_manut_ativo ON manutencoes (ativo_id);
         CREATE INDEX idx_doc_categoria ON documentos (categoria);
@@ -638,11 +674,11 @@ def exportar_sqlite(destino: Path, ativos, prestadores, cronograma_calc, manuten
                       m["prestador_id"] or None, parse_valor(m["valor"], f"sqlite {m['id']}", []),
                       m["documento"] or None, m["orcamento_id"] or None, m["responsavel"] or None)
                      for m in manutencoes_calc])
-    con.executemany("INSERT INTO documentos VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    con.executemany("INSERT INTO documentos VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     [(d["id"], d["titulo"], d["categoria"], d["arquivo"], d["tipo"], d["data_emissao"],
                       d["validade"] or None, d["prestador_id"] or None, d["art_rrt"] or None,
-                      d["manutencao_id"] or None, d["visibilidade"], d["status_validade"],
-                      d["observacoes"] or None)
+                      d["manutencao_id"] or None, d["contrato_id"] or None, d["visibilidade"],
+                      d["status_validade"], d["observacoes"] or None)
                      for d in documentos_calc])
     con.executemany("INSERT INTO contratos VALUES (?,?,?,?,?,?,?,?,?,?)",
                     [(c["id"], c["prestador_id"], c["objeto"], c["categoria"], c["inicio"], c["fim"],
@@ -674,6 +710,10 @@ def exportar_sqlite(destino: Path, ativos, prestadores, cronograma_calc, manuten
                       parse_valor(c["energia_kwh"], "sqlite", []),
                       parse_valor(c["custo_agua"], "sqlite", []),
                       parse_valor(c["custo_energia"], "sqlite", [])) for c in CONSUMO])
+    con.executemany("INSERT INTO compras VALUES (?,?,?,?,?,?,?,?,?)",
+                    [(c["id"], c["data"], c["descricao"], c["categoria"], c["fornecedor"],
+                      c["cnpj"] or None, parse_valor(c["valor"], "sqlite", []),
+                      c["documento"] or None, c["observacoes"] or None) for c in compras_calc])
     con.commit()
     con.close()
 
@@ -691,8 +731,8 @@ CAMPOS = {
                     ("documento", "string"), ("orcamento_id", "string"), ("responsavel", "string")],
     "documentos": [("id", "string"), ("titulo", "string"), ("categoria", "string"), ("arquivo", "string"),
                    ("tipo", "string"), ("data_emissao", "date"), ("validade", "date"), ("prestador_id", "string"),
-                   ("art_rrt", "string"), ("manutencao_id", "string"), ("visibilidade", "string"),
-                   ("observacoes", "string")],
+                   ("art_rrt", "string"), ("manutencao_id", "string"), ("contrato_id", "string"),
+                   ("visibilidade", "string"), ("observacoes", "string")],
     "contratos": [("id", "string"), ("prestador_id", "string"), ("objeto", "string"), ("categoria", "string"),
                   ("inicio", "date"), ("fim", "date"), ("valor_mensal", "number"), ("status", "string"),
                   ("documento", "string"), ("observacoes", "string")],
@@ -707,6 +747,9 @@ CAMPOS = {
                     ("observacoes", "string")],
     "consumo": [("mes", "string"), ("agua_m3", "number"), ("energia_kwh", "number"),
                 ("custo_agua", "number"), ("custo_energia", "number")],
+    "compras": [("id", "string"), ("data", "date"), ("descricao", "string"), ("categoria", "string"),
+                ("fornecedor", "string"), ("cnpj", "string"), ("valor", "number"),
+                ("documento", "string"), ("observacoes", "string")],
 }
 
 TITULOS_RECURSOS = {
@@ -721,6 +764,7 @@ TITULOS_RECURSOS = {
     "balancetes": "Balancetes mensais e inadimplência",
     "assembleias": "Assembleias (atas, convocações e quórum)",
     "consumo": "Consumo de água e energia das áreas comuns",
+    "compras": "Compras de materiais e insumos (com notas fiscais)",
 }
 
 
@@ -886,6 +930,7 @@ def main() -> None:
     documentos = ler_csv("documentos.csv")
     contratos = ler_csv("contratos.csv")
     orcamentos = ler_csv("orcamentos.csv")
+    compras = ler_csv("compras.csv")
     orcamento_anual = ler_csv("orcamento_anual.csv")
     balancetes = ler_csv("balancetes.csv")
     assembleias = ler_csv("assembleias.csv")
@@ -902,10 +947,13 @@ def main() -> None:
         ct["_valor_mensal"] = parse_valor(ct["valor_mensal"], f"contrato {ct['id']}", [])
     for o in orcamentos:
         o["_valor"] = parse_valor(o["valor"], f"orçamento {o['id']}", [])
+    for c in compras:
+        c["_data"] = parse_data(c["data"], f"compra {c['id']}", []) or date(1970, 1, 1)
+        c["_valor"] = parse_valor(c["valor"], f"compra {c['id']}", [])
 
     erros, avisos = validar(hoje, ativos, prestadores, cronograma, manutencoes,
                             documentos, contratos, orcamentos, orcamento_anual,
-                            balancetes, assembleias, consumo)
+                            balancetes, assembleias, consumo, compras)
     if erros:
         print("\nFalha na validação dos dados:", file=sys.stderr)
         for e in erros:
@@ -926,9 +974,13 @@ def main() -> None:
             "ativo_nome": ativo_por_id.get(m["ativo_id"], {}).get("nome", "?"),
             "prestador_nome": prest_por_id.get(m["prestador_id"], {}).get("nome") if m["prestador_id"] else None,
         })
-    documentos_calc = calcular_documentos(hoje, documentos, prestadores, manutencoes)
+    documentos_calc = calcular_documentos(hoje, documentos, prestadores, manutencoes, contratos)
     contratos_calc, _ = calcular_contratos(hoje, contratos, prestadores, manutencoes)
     orcamentos_calc = calcular_orcamentos(orcamentos, prestadores, cronograma_calc)
+    compras_calc = [{
+        **{k: v for k, v in c.items() if not k.startswith("_")},
+        "data": c["_data"].isoformat(),
+    } for c in sorted(compras, key=lambda c: c["_data"], reverse=True)]
     orcamento, balancetes_calc, assembleias_calc = calcular_transparencia(
         hoje, manutencoes, orcamento_anual, balancetes, assembleias)
     globals()["BALANCETES_CALC"] = balancetes_calc
@@ -944,12 +996,15 @@ def main() -> None:
         for o in orcamentos_calc:
             if o["documento"] in arquivos_admin:
                 o["documento"] = ""
+        for c in compras_calc:
+            if c["documento"] in arquivos_admin:
+                c["documento"] = ""
         for c in contratos_calc:
             if c["documento"] in arquivos_admin:
                 c["documento"] = ""
 
     agregacoes = agregar(hoje, manutencoes, cronograma_calc, ativos, documentos_calc,
-                         contratos_calc, orcamentos_calc)
+                         contratos_calc, orcamentos_calc, compras)
 
     manutencoes_limpo = [{k: v for k, v in m.items() if not k.startswith("_")} for m in manutencoes_calc]
     contratos_limpo = [{k: v for k, v in c.items() if not k.startswith("_")} for c in contratos_calc]
@@ -967,6 +1022,7 @@ def main() -> None:
         "documentos": documentos_calc,
         "contratos": contratos_limpo,
         "orcamentos": orcamentos_limpo,
+        "compras": compras_calc,
         "orcamento": orcamento,
         "balancetes": balancetes_calc,
         "assembleias": assembleias_calc,
@@ -986,6 +1042,7 @@ def main() -> None:
         "ativos": ativos, "prestadores": prestadores, "cronograma": cronograma_calc,
         "manutencoes": manutencoes_limpo, "documentos": documentos_calc,
         "contratos": contratos_limpo, "orcamentos": orcamentos_limpo,
+        "compras": compras_calc,
         "orcamento_anual": orcamento_anual, "balancetes": balancetes_calc,
         "assembleias": assembleias_calc, "consumo": consumo,
     }
@@ -995,7 +1052,7 @@ def main() -> None:
             json.dumps(linhas, ensure_ascii=False, indent=2), encoding="utf-8")
 
     exportar_sqlite(destino, ativos, prestadores, cronograma_calc, manutencoes_calc,
-                    documentos_calc, contratos_calc, orcamentos_calc)
+                    documentos_calc, contratos_calc, orcamentos_calc, compras_calc)
     exportar_datapackage(destino, gerado_em, perfil)
     exportar_ics(destino, hoje, cronograma_calc, documentos_calc, contratos_calc, assembleias_calc)
 

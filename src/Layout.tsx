@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import {
   Building2, CalendarClock, CalendarDays, Database, FolderOpen, History, LayoutDashboard,
-  Menu, Moon, ReceiptText, Search, Sun, Users, Vote, X,
+  Menu, Moon, ReceiptText, Search, ShoppingCart, Sun, Users, Vote, X,
 } from 'lucide-react'
 import { dados } from './dados'
 import { dataPt } from './format'
@@ -20,6 +20,7 @@ const ITENS = [
   { para: '/calendario', rotulo: 'Calendário', icone: CalendarDays },
   { para: '/cronograma', rotulo: 'Cronograma', icone: CalendarClock },
   { para: '/historico', rotulo: 'Histórico', icone: History },
+  { para: '/compras', rotulo: 'Compras', icone: ShoppingCart },
   { para: '/financeiro', rotulo: 'Financeiro', icone: ReceiptText },
   { para: '/assembleias', rotulo: 'Assembleias', icone: Vote },
   { para: '/prestadores', rotulo: 'Prestadores', icone: Users },
